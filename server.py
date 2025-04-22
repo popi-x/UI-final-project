@@ -5,6 +5,10 @@ app = Flask(__name__)
 # Temporary in-memory store for quiz results (reset each time the server restarts)
 quiz_results = {}
 
+@app.route("/")
+def homepage():
+    return render_template("homepage.html")
+
 @app.route("/quiz/1")
 def quiz_1():
     draggable_values = ['-4', '-3', '-1', '0', '+2', '+3']

@@ -1,12 +1,12 @@
 
-{% extends "base.html" %}
-{% block content %}
-<head>
+{% extends "layout.html" %}
+
+{% block styles %} 
     <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    rel="stylesheet" crossorigin="anonymous">
-</head>
+{% endblock %}
+
+
+{% block content %}
 <p>Quiz 1: Drag and drop the correct exposure value below each photo</p>
 
 <div id="quiz-container">

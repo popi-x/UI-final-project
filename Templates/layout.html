@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+  {% block styles %} {% endblock %}
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Camera Basics</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/exposure">Exposure</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/iso">ISO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/aperture">Aperture</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shutter_speed">Shutter Speed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/triangle">Exposure Triangle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/quiz/1">Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  <div class="container">
+    {% block content %}
+    {% endblock %}  
+  </div>
+</body>
+</html>
