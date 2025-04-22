@@ -1,69 +1,71 @@
-from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 from flask_cors import CORS
-import os
 
 app = Flask(__name__)
-app.secret_key = "supersecretkey"
+app.secret_key = 'supersecretkey'
 CORS(app)
 
-# Sample correct answers for quiz 1
+# Correct answers for each quiz question
 correct_answers = {
-    1: {
-        "slot_0": "-4",
-        "slot_1": "-3",
-        "slot_2": "-1",
-        "slot_3": "0",
-        "slot_4": "+2",
-        "slot_5": "+3"
-    }
+    1: ['-4', '-3', '-1', '0', '+2', '+3'],
+    2: ['800', '1600', '6400', '12800'],
+    3: ['f/1.4'],  # Example — you can add complexity later
+    4: ['1/1000s', '1/500s'],
+    5: ['f7.1 1/30s ISO1250', 'f4.8 1/15s ISO1600', 'f5.6 1/2000s ISO800']
 }
 
-@app.route('/')
+@app.route("/")
 def home():
     return render_template("base.html")
 
-@app.route('/quiz/<int:question_num>')
-def quiz_page(question_num):
-    return render_template("quiz.html", question_num=question_num)
+@app.route("/quiz/<int:question_id>")
+def quiz_view(question_id):
+    draggable_values = correct_answers.get(question_id, [])
+    return render_template("quiz.html", draggable_values=draggable_values, question_id=question_id)
 
-@app.route('/quiz/<int:question_num>/answer', methods=['POST', 'GET'])
-def quiz_answer(question_num):
-    if request.method == 'POST':
-        data = request.get_json()
-        user_answers = data.get('user_answers', {})
-        correct = correct_answers.get(question_num, {})
+@app.route("/quiz/<int:question_id>/answer", methods=["POST"])
+def quiz_post(question_id):
+    data = request.get_json()
+    user_answers = data.get("user_answers", {})
 
-        correctness = []
-        score = 0
-        for i in range(len(correct)):
-            correct_value = correct.get(f"slot_{i}")
-            user_value = user_answers.get(f"slot_{i}")
-            is_correct = user_value == correct_value
-            correctness.append(is_correct)
-            if is_correct:
-                score += 1
+    # Store answers temporarily in session
+    session[f"user_answers_{question_id}"] = user_answers
 
-        session[f"quiz_{question_num}_score"] = score
-        session[f"quiz_{question_num}_user_answers"] = user_answers
-        return jsonify(success=True)
+    return jsonify({"status": "received"})
 
-    # For GET: render feedback page
-    user_answers = session.get(f"quiz_{question_num}_user_answers", {})
-    correct = correct_answers.get(question_num, {})
-    correctness = [user_answers.get(f"slot_{i}") == correct.get(f"slot_{i}") for i in range(len(correct))]
+@app.route("/quiz/<int:question_id>/answer")
+def quiz_feedback(question_id):
+    correct = correct_answers.get(question_id, [])
+    user_data = session.get(f"user_answers_{question_id}", {})
+
+    # Build aligned lists for frontend
+    user_answers = [user_data.get(f"slot_{i}") for i in range(len(correct))]
+    correctness = [user_answers[i] == correct[i] for i in range(len(correct))]
     is_correct = all(correctness)
 
-    return render_template("quiz_answer.html",
-                           question_num=question_num,
-                           user_answers=[user_answers.get(f"slot_{i}", "") for i in range(len(correct))],
-                           correct_answers=[correct.get(f"slot_{i}", "") for i in range(len(correct))],
-                           correctness=correctness,
-                           is_correct=is_correct)
+    # Store score
+    session[f"score_{question_id}"] = sum(correctness)
 
-@app.route('/quiz/results')
-def quiz_results():
-    total_score = sum(session.get(key, 0) for key in session if key.endswith('_score'))
-    return f"<h1>Your final score: {total_score}</h1>"
+    return render_template(
+        "quiz_answer.html",
+        question_id=question_id,
+        user_answers=user_answers,
+        correct_answers=correct,
+        correctness=correctness,
+        is_correct=is_correct
+    )
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route("/quiz/results")
+def results():
+    total_score = 0
+    total_possible = 0
+
+    for qid, answers in correct_answers.items():
+        score = session.get(f"score_{qid}", 0)
+        total_score += score
+        total_possible += len(answers)
+
+    return f"<h2>Your final score: {total_score} / {total_possible}</h2>"
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5001)
