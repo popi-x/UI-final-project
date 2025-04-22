@@ -1,0 +1,43 @@
+/*.image-row,
+.choices-row,
+.dropzone-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.quiz-image-slot {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: auto;
+}
+  */
+
+.dropzone {
+    width: 60px;
+    height: 40px;
+    border: 2px dashed black;  
+    background-color: #f1f5f9;    
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+
+.draggable {
+  width: 60px;
+  height: 40px;
+  background-color: #dbeafe;
+  border: 1px solid #60a5fa;
+  line-height: 40px;
+  text-align: center;
+  cursor: grab;
+  font-weight: bold;
+}
+
+.used{
+    background-color: grey;
+    cursor: not-allowed;
+}

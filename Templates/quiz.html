@@ -1,5 +1,48 @@
 
-<script type="text/javascript" src="{{ url_for('static', filename = 'quiz.js') }}"></script>
-<div>
+{% extends "base.html" %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet" crossorigin="anonymous">
+</head>
+<p>Quiz 1: Drag and drop the correct exposure value below each photo</p>
 
+<div id="quiz-container">
+  <div class="image-row">
+    <div class="row text-center mb-3">
+        {% for i in range(6) %}
+          <div class="col">
+            <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" class="img-fluid" alt="photo {{ i+1 }}">
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+  <div class="dropzone-row">
+    <div class="row text-center mb-3">
+        {% for i in range(6) %}
+          <div class="col">
+            <div class="dropzone" id="dropzone-{{ i }}"></div>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+  <div class="choices-row">
+    <div class="row text-center">
+        {% for value in draggable_values %}
+          <div class="col">
+            <div class="draggable" data-value="{{ value }}">{{ value }}</div>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+  <br>
+  <button id="submit-btn">submit</button>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="{{ url_for('static', filename='drag_drop.js') }}"></script>
+
+{% endblock %}
