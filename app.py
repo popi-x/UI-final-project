@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
@@ -39,6 +40,31 @@ def triangle(step_id):
             return redirect(url_for("triangle", step_id=1))
 
     return render_template("triangle_step.html", step=step_id)
+
+
+@app.route("/aperture/<int:step>", methods=["GET", "POST"])
+def aperture(step):
+    import json
+    from flask import render_template, request, session, redirect, url_for
+
+    with open("data/aperture_data.json") as f:
+        content = json.load(f)
+
+    if step < 1 or step > len(content):
+        return redirect(url_for("aperture", step=1))
+
+    if request.method == "POST":
+        action = request.form.get("action")
+        if action == "next" and step < len(content):
+            return redirect(url_for("aperture", step=step + 1))
+        elif action == "prev" and step > 1:
+            return redirect(url_for("aperture", step=step - 1))
+        elif action == "restart":
+            return redirect(url_for("aperture", step=1))
+
+    data = content[step - 1]
+    return render_template("aperture_step.html", step=step, total_steps=len(content), data=data)
+
 
 # ✅ ADD THIS to make it run properly at port 5001
 if __name__ == "__main__":
