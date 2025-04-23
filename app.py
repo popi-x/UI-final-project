@@ -16,12 +16,13 @@ correct_answers = {
 
 @app.route("/")
 def home():
-    return render_template("base.html")
+    return render_template("homepage.html")
 
 @app.route("/quiz/<int:question_id>")
 def quiz_view(question_id):
     draggable_values = correct_answers.get(question_id, [])
-    return render_template("quiz.html", draggable_values=draggable_values, question_id=question_id)
+    template_name = f"quiz_{question_id}.html"
+    return render_template(template_name, draggable_values=draggable_values, question_id=question_id)
 
 @app.route("/quiz/<int:question_id>/answer", methods=["POST"])
 def quiz_post(question_id):
@@ -65,7 +66,10 @@ def results():
         total_score += score
         total_possible += len(answers)
 
-    return f"<h2>Your final score: {total_score} / {total_possible}</h2>"
-
+    return render_template(
+        "quiz_results.html",
+        score=total_score,
+        total=total_possible
+    )
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
