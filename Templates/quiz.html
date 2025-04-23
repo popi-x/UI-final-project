@@ -1,48 +1,23 @@
-
 {% extends "layout.html" %}
 
 {% block styles %} 
-    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
 {% endblock %}
 
-
 {% block content %}
-<p>Quiz 1: Drag and drop the correct exposure value below each photo</p>
+<div id="quiz-container" class="container mt-4" data-question-id="{{ question_id }}">
+  <h2 class="mb-3">{% block title %}Quiz {{ question_id }}{% endblock %}</h2>
 
-<div id="quiz-container">
-  <div class="image-row">
-    <div class="row text-center mb-3">
-        {% for i in range(6) %}
-          <div class="col">
-            <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" class="img-fluid" alt="photo {{ i+1 }}">
-          </div>
-        {% endfor %}
-    </div>
+  {% block question_body %}
+  <!-- To be filled in by specific quiz templates -->
+  {% endblock %}
+
+  <div class="text-center mt-4">
+    <button id="submit-btn">submit</button>
   </div>
-  <div class="dropzone-row">
-    <div class="row text-center mb-3">
-        {% for i in range(6) %}
-          <div class="col">
-            <div class="dropzone" id="dropzone-{{ i }}"></div>
-          </div>
-        {% endfor %}
-    </div>
-  </div>
-  <div class="choices-row">
-    <div class="row text-center">
-        {% for value in draggable_values %}
-          <div class="col">
-            <div class="draggable" data-value="{{ value }}">{{ value }}</div>
-          </div>
-        {% endfor %}
-    </div>
-  </div>
-  <br>
-  <button id="submit-btn">submit</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script src="{{ url_for('static', filename='drag_drop.js') }}"></script>
-
+<script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>
 {% endblock %}

@@ -1,0 +1,24 @@
+{% extends "quiz.html" %}
+<!-- DEBUG: this is quiz_3.html -->
+
+{% block title %}Quiz 3: Adjust the aperture slider so that only the desired object appears sharp and in focus.{% endblock %}
+
+{% block question_body %}
+  <!-- Image row -->
+  <div class="row text-center mb-3">
+      <div class="col">
+        <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" class="w-50" alt="placeholder">
+      </div>
+  </div>
+
+  <div class="row text-center mb-3">
+    <div class="col">
+        <p>[Toggle Bar or Slider]</p>
+    </div>
+  </div>
+
+  <!-- Toggle bar interaction for quiz 3 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>
+{% endblock %}

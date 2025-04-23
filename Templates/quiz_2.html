@@ -1,0 +1,39 @@
+{% extends "quiz.html" %}
+<!-- DEBUG: this is quiz_2.html -->
+
+{% block title %}Quiz 2: Drag and drop the correct ISO used in each photo{% endblock %}
+
+{% block question_body %}
+  <!-- Image row -->
+  <div class="row text-center mb-3">
+    {% for i in range(4) %}
+      <div class="col">
+        <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" class="img-fluid" alt="photo {{ i+1 }}">
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Dropzone row -->
+  <div class="row text-center mb-3">
+    {% for i in range(4) %}
+      <div class="col">
+        <div class="dropzone" id="dropzone-{{ i }}"></div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Draggable values row -->
+  <div class="row text-center">
+    {% for value in draggable_values %}
+      <div class="col">
+        <div class="draggable" data-value="{{ value }}">{{ value }}</div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- drag-drop interaction for quiz 2 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/drag_drop.js') }}"></script>
+{% endblock %}
