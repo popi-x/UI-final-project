@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>{{ data.title }}</h2>
+
+<p style="white-space: pre-line;">{{ data.text }}</p>
+
+<div class="row">
+  {% for img in data.images %}
+    <div class="col-md-6">
+      <img src="{{ url_for('static', filename=img) }}" alt="Shutter speed visual" class="img-fluid my-3">
+    </div>
+  {% endfor %}
+</div>
+
+<form method="POST">
+  {% if step > 1 %}
+    <button name="action" value="prev" class="btn btn-secondary">Back</button>
+  {% endif %}
+  {% if step < total_steps %}
+    <button name="action" value="next" class="btn btn-primary float-end">Next</button>
+  {% else %}
+    <a href="{{ url_for('shutter_speed', step=1) }}" class="btn btn-success float-end">Done</a>
+  {% endif %}
+</form>
+
+{% endblock %}
