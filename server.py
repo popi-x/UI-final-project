@@ -9,6 +9,14 @@ quiz_results = {}
 def homepage():
     return render_template("homepage.html")
 
+@app.route("/learn/exposure/cover")
+def exposure():
+    return render_template("exposure_cover.html")
+
+@app.route("/learn/overview")
+def overview():
+    return render_template("overview.html")
+
 @app.route("/quiz/1")
 def quiz_1():
     draggable_values = ['-4', '-3', '-1', '0', '+2', '+3']
