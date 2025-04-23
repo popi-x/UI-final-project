@@ -31,11 +31,11 @@ def exposure():
 def exposure_1():
     return render_template("exposure_1.html")
 
-@app.route("/iso/cover")
+@app.route("/learn/iso/cover")
 def iso_cover():
     return render_template("iso_cover.html")
 
-@app.route("/iso/1")
+@app.route("/learn/iso/1")
 def iso_1():
     return render_template("iso_1.html")
 
@@ -67,7 +67,7 @@ def triangle(step_id):
 
         elif action == "restart":
             session.clear()
-            return redirect(url_for("triangle", step_id=1))
+            return redirect(url_for("quiz_view", question_id=1))
 
     return render_template("triangle_step.html", step=step_id)
 

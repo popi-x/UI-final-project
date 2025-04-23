@@ -1,4 +1,7 @@
-
+#fo-sequence{
+    font-size: 1rem;
+    color: gray;
+}
 
 .custom-vp-width{
     width: 60vw;
