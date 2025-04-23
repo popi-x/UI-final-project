@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Camera Basics: Aperture",
+    "text": "Why is my background blurred?",
+    "image": "images/aperture_1.png"
+  },
+  {
+    "title": "What Is Aperture?",
+    "text": "Aperture is the opening in a lens that controls how much light enters the camera—wider apertures (like f/1.8) let in more light and create a blurry background, while narrower apertures (like f/16) let in less light and keep more of the scene in focus.",
+    "image": "images/aperture_2.png"
+  },
+  {
+    "title": "Depth of Field",
+    "text": "Depth of field is directly affected by aperture—a wide aperture (like f/1.8) creates a shallow depth of field, blurring the background, while a narrow aperture (like f/16) results in a deep depth of field, keeping more of the scene in focus.",
+    "image": "images/aperture_3.png"
+  }
+]
