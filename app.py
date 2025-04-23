@@ -16,7 +16,7 @@ correct_answers = {
 
 @app.route("/")
 def home():
-    return render_template("base.html")
+    return render_template("layout.html")
 
 @app.route("/quiz/<int:question_id>")
 def quiz_view(question_id):
@@ -64,8 +64,40 @@ def results():
         score = session.get(f"score_{qid}", 0)
         total_score += score
         total_possible += len(answers)
-
     return f"<h2>Your final score: {total_score} / {total_possible}</h2>"
+
+@app.route("/triangle")
+def triangle_redirect():
+    return redirect(url_for("triangle", step_id=1))
+
+@app.route("/learn/<int:step_id>", methods=["GET", "POST"])
+def triangle(step_id):
+    session["step"] = step_id
+    feedback = None
+
+    if request.method == "POST":
+        action = request.form.get("action")
+
+        if action == "next":
+            if step_id == 3:
+                choice = request.form.get("choice1")
+                if choice != "Shutter Speed":
+                    feedback = "❌ Think again—freezing motion needs a fast shutter speed."
+                    return render_template("triangle_step.html", step=step_id, feedback=feedback)
+            session["step"] = step_id + 1
+            return redirect(url_for("triangle", step_id=session["step"]))
+
+        elif action == "prev":
+            session["step"] = max(step_id - 1, 1)
+            return redirect(url_for("triangle", step_id=session["step"]))
+
+        elif action == "restart":
+            session.clear()
+            return redirect(url_for("triangle", step_id=1))
+
+    return render_template("triangle_step.html", step=step_id)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
