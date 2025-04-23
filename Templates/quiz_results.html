@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+
+  <!-- Final score -->
+  <h2 class="mb-4">You got {{ score }} out of {{ total }} correct!</h2>
+  
+  <!-- Retake button -->
+  <a href="/" class="btn btn-outline-dark btn-lg px-4 py-2">Retake the lessons</a>
+
+</div>
+{% endblock %}

@@ -18,7 +18,7 @@ $(document).ready(function(){
           ui.draggable.addClass("used");
         }
       });
-    
+    /*
       $("#submit-btn").on("click", function () {
         let userAnswers = {};
         $(".dropzone").each(function (i) {
@@ -40,4 +40,5 @@ $(document).ready(function(){
           }
         });
       });
+      */
 })

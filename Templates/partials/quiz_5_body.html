@@ -1,0 +1,28 @@
+<h2 class="mb-3">Quiz {{ question_id }}: Match the photos with the correct settings.</h2>
+
+<!-- Image row -->
+  <div class="row text-center mb-3">
+    {% for i in range(3) %}
+      <div class="col">
+        <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" class="img-fluid" alt="photo {{ i+1 }}">
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Dropzone row -->
+  <div class="row text-center mb-3">
+    {% for i in range(3) %}
+      <div class="col">
+        <div class="dropzone" id="dropzone-{{ i }}"></div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Draggable values row -->
+  <div class="row text-center">
+    {% for value in draggable_values %}
+      <div class="col">
+        <div class="draggable" data-value="{{ value }}">{{ value }}</div>
+      </div>
+    {% endfor %}
+  </div>
