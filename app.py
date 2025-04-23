@@ -65,6 +65,27 @@ def aperture(step):
     data = content[step - 1]
     return render_template("aperture_step.html", step=step, total_steps=len(content), data=data)
 
+@app.route("/shutter_speed/<int:step>", methods=["GET", "POST"])
+def shutter_speed(step):
+    with open("data/shutter_speed_data.json") as f:
+        content = json.load(f)
+
+    if step < 1 or step > len(content):
+        return redirect(url_for("shutter_speed", step=1))
+
+    if request.method == "POST":
+        action = request.form.get("action")
+        if action == "next" and step < len(content):
+            return redirect(url_for("shutter_speed", step=step + 1))
+        elif action == "prev" and step > 1:
+            return redirect(url_for("shutter_speed", step=step - 1))
+        elif action == "restart":
+            return redirect(url_for("shutter_speed", step=1))
+
+    data = content[step - 1]
+    return render_template("shutter_speed_step.html", step=step, total_steps=len(content), data=data)
+
+
 
 # ✅ ADD THIS to make it run properly at port 5001
 if __name__ == "__main__":
