@@ -17,9 +17,22 @@ $(document).ready(function () {
   // 3. submit button
   function submitQuiz(questionId) {
     let userAnswers = {};
+    let isComplete = true;
+  
     document.querySelectorAll('.dropzone').forEach((el, i) => {
-      userAnswers[`slot_${i}`] = el.dataset.value || null;
+      const val = el.dataset.value || null;
+      userAnswers[`slot_${i}`] = val;
+  
+      if (!val) {
+        isComplete = false;
+      }
     });
+  
+    if (!isComplete) {
+      alert("Please complete all the dropzones before submitting!");
+      return; // Do not submit with null answers
+    }
+  
 
     fetch(`/quiz/${questionId}/answer`, {
       method: "POST",
@@ -60,4 +73,16 @@ $(document).ready(function () {
       nextPage(qid);
     }
   });
+
+  //6. Proress Bar
+  function renderProgressBar(questionId, totalQuestions = 5) {
+    const percent = Math.floor((questionId / totalQuestions) * 100);
+    const $bar = $("#quizProgress");
+  
+    $bar.css("width", `${percent}%`);
+    $bar.text(`${percent}%`);
+  }
+  //renderProgressBar(qid);
+  //Function disabled because now it's rendered directly in HTML using server data
+  //You can revert this if we want to restore the loading client-side animation later
 });

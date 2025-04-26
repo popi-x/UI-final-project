@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, jsonify, render_template, request, redirect, session, url_for
 from flask_cors import CORS
 import json
 
@@ -120,7 +120,8 @@ def shutter_speed(step):
 def quiz_view(question_id):
     draggable_values = correct_answers.get(question_id, [])
     template_name = f"quiz_{question_id}.html"
-    return render_template(template_name, draggable_values=draggable_values, question_id=question_id)
+    percent = int((question_id / len(correct_answers)) * 100)
+    return render_template(template_name, draggable_values=draggable_values, question_id=question_id, progress_percent=percent)
 
 
 @app.route("/quiz/<int:question_id>/answer", methods=["POST"])
@@ -137,6 +138,8 @@ def quiz_post(question_id):
 def quiz_feedback(question_id):
     correct = correct_answers.get(question_id, [])
     user_data = session.get(f"user_answers_{question_id}", {})
+    #DEBUG
+    print(f"[DEBUG] Received answers for Quiz {question_id}: {user_data}")
 
     # Build aligned lists for frontend
     user_answers = [user_data.get(f"slot_{i}") for i in range(len(correct))]
@@ -146,13 +149,16 @@ def quiz_feedback(question_id):
     # Store score
     session[f"score_{question_id}"] = sum(correctness)
 
+    # [EDIT]Calculate progress bar width
+    percent = int((question_id / len(correct_answers)) * 100)
     return render_template(
         "quiz_answer.html",
         question_id=question_id,
         user_answers=user_answers,
         correct_answers=correct,
         correctness=correctness,
-        is_correct=is_correct
+        is_correct=is_correct,
+        progress_percent=percent
     )
 
 @app.route("/quiz/results")

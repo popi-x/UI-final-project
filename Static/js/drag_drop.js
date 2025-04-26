@@ -11,7 +11,8 @@ $(document).ready(function(){
         drop: function (event, ui) {
           const droppedValue = ui.draggable.data("value");
           const $this = $(this);
-          $this.data("value", droppedValue);
+          $this.data("value", droppedValue);//stored in jQuery
+          $this.attr("data-value", droppedValue);//stored in HTML
           $this.text(droppedValue);
     
           ui.draggable.draggable("disable");
