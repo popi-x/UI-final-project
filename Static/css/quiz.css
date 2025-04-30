@@ -41,3 +41,12 @@
     background-color: grey;
     cursor: not-allowed;
 }
+
+
+/*Quiz section Progress bar*/
+
+
+.bg-gradient-green{
+  background: linear-gradient(90deg, #DBFFDB 0%, #A8EBA8 100%);
+  color: #000;
+}

@@ -7,8 +7,18 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
 {% endblock %}
 
-<div id="quiz-container" class="container mt-4" data-question-id="{{ question_id }}">
 
+<div id="quiz-container" class="container mt-4" data-question-id="{{ question_id }}">
+  <!--Progress Bar-->
+  <div class="progress my-3" style="height: 24px;">
+    <div class="progress-bar bg-gradient-green"
+         role="progressbar"
+         style="width: {{ progress_percent }}%;"
+         aria-valuemin="0" aria-valuemax="100">
+      {{ progress_percent }}%
+    </div>
+  </div>
+  
   {% block question_body %}
     {% include "partials/quiz_" ~ question_id ~ "_body.html" %}
   {% endblock %}

@@ -6,8 +6,17 @@
 
 {% block content %}
 <div id="quiz-container" class="container mt-4" data-question-id="{{ question_id }}">
-  <h2 class="mb-3">{% block title %}Quiz {{ question_id }}{% endblock %}</h2>
+  <!--Progress Bar-->
+  <div class="progress my-3" style="height: 24px;">
+    <div class="progress-bar bg-gradient-green"
+         role="progressbar"
+         style="width: {{ progress_percent }}%;"
+         aria-valuemin="0" aria-valuemax="100">
+      {{ progress_percent }}%
+    </div>
+  </div>
 
+  <h2 class="mb-3">{% block title %}Quiz {{ question_id }}{% endblock %}</h2>
   {% block question_body %}
   <!-- To be filled in by specific quiz templates -->
   {% endblock %}
