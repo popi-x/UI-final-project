@@ -31,11 +31,11 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="/learn/exposure/cover">Exposure</a></li>
-          <li class="nav-item"><a class="nav-link" href="/learn/iso/cover">ISO</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('aperture', step=1) }}">Aperture</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('shutter_speed', step=1) }}">Shutter Speed</a></li>
-          <li class="nav-item"><a class="nav-link" href="/learn/1">Exposure Triangle</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.path.startswith('/learn/exposure') %}active{% endif %}" href="/learn/exposure/cover">Exposure</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.path.startswith('/learn/iso') %} active{% endif %}" href="/learn/iso/cover">ISO</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.path.startswith('/learn/aperture') %} active {% endif %}" href="/aperture/1">Aperture</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.path.startswith('/learn/shutter_speed') %} active {% endif %}" href="/shutter_speed/1">Shutter Speed</a></li>
+          <li class="nav-item"><a class="nav-link {% if request.path.startswith('/learn/triangle') %} active {% endif %}" href="/learn/1">Exposure Triangle</a></li>
           <li class="nav-item"><a class="nav-link" href="/quiz/1">Quiz</a></li>
         </ul>
       </div>
