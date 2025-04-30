@@ -102,19 +102,24 @@ body {
   
   /* ---------- RIGHT IMAGE BLOCK ---------- */
  
+
   .right {
     flex: 1;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;   /* ⬅️ moves image upward */
-    padding-top: 1rem;         /* optional: fine-tune upward shift */
+    justify-content: flex-start;  /* Align image leftward */
+    align-items: center;
+    padding: 0;
   }
-  
+
   .right img {
-    width: 3500px;              /* ⬅️ make the image bigger */
-    max-width: 170%;
+    width: 950px;
+    max-width: none;
+    margin-left: -520px;
+    margin-top: -90px;   /* ⬅️ This moves it up */
     object-fit: contain;
   }
+  
+  
   
   .move-down {
     margin-top: 1.5rem;     /* adjust how far down it moves */
