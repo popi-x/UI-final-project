@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<div class="mb-5">
+    <p class="learn-texts">
+        <strong>ISO</strong> controls how sensitive the sensor is to light — lower ISO (like 100) means less sensitivity and cleaner images, while higher ISO (like 1600 or more) increases sensitivity but can add grain or noise (yes! That’s the name of the particles in your photo). We usually use a higher ISO in low-light environments.
+    </p>
+</div>
+
+<img src="{{ url_for('static', filename='images/iso_sample.png') }}" class="img-fluid mb-4" alt="ISO Example" id="iso-example">
+
+<div class="next-btn-container text-right">
+        <a href="/aperture/1" class="btn btn-primary px-4 py-2">Next</a>
+    </div>
+{% endblock %}

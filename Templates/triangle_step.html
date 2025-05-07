@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Exposure Triangle Walkthrough</h2>
+
+{% if step == 1 %}
+  <p><strong>The Exposure Triangle</strong> comprises aperture, shutter speed, and ISO. These three settings work together to regulate the amount of light that makes it to the light-sensitive surface (aperture and shutter speed) and the sensitivity of that surface (film or digital ISO).</p>
+  <h3 class="mt-4 text-center"><strong>Feeling confused? That’s completely normal—don’t worry!</strong></h3>
+  <p class="mt-4">The concept of the exposure triangle can feel a bit abstract if you're just starting out. So let’s set aside what you just saw for a moment.</p>
+  <img src="{{ url_for('static', filename='images/exposure_triangle.png') }}" alt="Triangle interaction" class="img-fluid my-3 triangle">
+  <form method="POST">
+    <button class="btn btn-outline-dark mt-3 float-end" name="action" value="next">Next</button>
+  </form>
+
+{% elif step == 2 %}
+  <p>If you change one of ISO, aperture, or shutter speed while keeping the others constant, your EV (exposure value) changes. This triangle shows how they affect the shot.</p>
+  <img src="{{ url_for('static', filename='images/exposure_triangle_2.png') }}" alt="Triangle interaction" class="img-fluid my-3 triangle">
+  <form method="POST">
+    <button name="action" value="prev" class="btn btn-secondary">Back</button>
+    <button name="action" value="next" class="btn btn-primary">Next</button>
+  </form>
+
+{% elif step == 3 %}
+  <p><strong>Scenario:</strong> You want to freeze the motion of a cyclist in a dark environment.</p>
+  <p><code>f 1.4 | 1/10s | ISO 100 | EV 0</code></p>
+  <p><strong>Which setting should you adjust first?</strong></p>
+  <form method="POST">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="choice1" value="Shutter Speed" id="shutter" required>
+      <label class="form-check-label" for="shutter">Shutter Speed (to freeze motion)</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="choice1" value="ISO" id="iso">
+      <label class="form-check-label" for="iso">ISO (to brighten)</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="choice1" value="Aperture" id="aperture">
+      <label class="form-check-label" for="aperture">Aperture (to let in more light)</label>
+    </div>
+    {% if feedback %}
+      <div class="alert alert-warning mt-3">{{ feedback }}</div>
+    {% endif %}
+    <button class="btn btn-secondary mt-3" name="action" value="prev">Back</button>
+    <button class="btn btn-primary mt-3" name="action" value="next">Submit</button>
+  </form>
+
+{% elif step == 4 %}
+  <p>You selected fast shutter: <code>f/1.4, 1/300s, ISO 100 → EV -3</code></p>
+  <p>What would you adjust next to balance it?</p>
+  <form method="POST">
+    <input type="radio" name="choice2" value="ISO"> Increase ISO<br>
+    <input type="radio" name="choice2" value="Aperture"> Adjust aperture<br><br>
+    <button name="action" value="prev" class="btn btn-secondary">Back</button>
+    <button name="action" value="next" class="btn btn-primary">Next</button>
+  </form>
+
+{% elif step == 5 %}
+  <p>Now you’ve widened the aperture: <code>f/0.95, 1/300s, ISO 100 → EV -1</code></p>
+  <p>What’s the last adjustment?</p>
+  <form method="POST">
+    <input type="radio" name="choice3" value="ISO"> Raise ISO<br>
+    <input type="radio" name="choice3" value="None"> Keep as is<br><br>
+    <button name="action" value="prev" class="btn btn-secondary">Back</button>
+    <button name="action" value="next" class="btn btn-success">Finish</button>
+  </form>
+
+{% elif step == 6 %}
+  <h4>✅ Final Settings</h4>
+  <p><strong>f/0.95, 1/300s, ISO 3200 → EV 0</strong></p>
+  <p>You successfully froze the cyclist in low light with perfect exposure.</p>
+  <form method="POST">
+    <button name="action" value="restart" class="btn btn-primary">Quiz</button>
+  </form>
+  <hr>
+  <h5>Try Adjusting the Triangle:</h5>
+  <form>
+    <label>ISO: <input type="range" min="100" max="6400" value="100" class="form-range"></label><br>
+    <label>Aperture (f/): <input type="range" min="1.4" max="16" step="0.1" value="1.4" class="form-range"></label><br>
+    <label>Shutter Speed (1/x): <input type="range" min="30" max="1000" step="10" value="100" class="form-range"></label><br>
+  </form>
+{% endif %}
+
+{% endblock %}

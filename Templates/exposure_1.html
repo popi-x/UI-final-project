@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="mb-5 ">
+    <p  class="learn-texts">
+      <strong>Exposure</strong> is how bright or dark a photo looks. A value of 0 <strong>exposure value (EV)</strong> means optimal exposure based on the camera’s metering.
+      <strong>Positive EV (+1, +2, etc.)</strong> means the image will be brighter (overexposed), while
+      <strong>negative EV (–1, –2, etc.)</strong> means it will be darker (underexposed).
+    </p>
+  </div>
+
+  <!-- Image grid -->
+  <div class="row justify-content-center text-center">
+    
+    <!-- Underexposure -->
+    <div class="col-md-4 mb-4">
+      <img src="{{ url_for('static', filename='images/underEV.png') }}" class="img-fluid mb-2" alt="Underexposure">
+      <h6><strong>Underexposure</strong></h6>
+      <p>The photo is too dark, making it hard to see details in the shadows.</p>
+    </div>
+
+    <!-- Normal exposure -->
+    <div class="col-md-4 mb-4">
+      <img src="{{ url_for('static', filename='images/naturalEV.png') }}" class="img-fluid mb-2" alt="Optimal Exposure">
+      <h6><strong>Natural/optimal exposure</strong></h6>
+      <p>The photo is neither too bright nor too dark—just the right balance of light to show details clearly.</p>
+    </div>
+
+    <!-- Overexposure -->
+    <div class="col-md-4 mb-4">
+      <img src="{{ url_for('static', filename='images/overEV.png') }}" class="img-fluid mb-2" alt="Overexposure" id="overexposure">
+      <h6><strong>Overexposure</strong></h6>
+      <p>The photo is too bright, causing details in the lighter areas to be lost.</p>
+    </div>
+    </div>
+
+    <div class="next-btn-container text-right">
+        <a href="/learn/iso/cover" class="btn btn-primary px-4 py-2">Next</a>
+    </div>
+
+{% endblock %}

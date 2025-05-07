@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+{% if step == 1 %}
+    <div class="cover row  align-items-center">
+        <div class="col-md-6">
+            <h1>Aperture</h1>
+            <p class="sub-title">Why is my background blurred?
+    </p>
+        </div>
+
+        <div class="image-content col-md-5 text-center">
+            <!-- Right side image - replace with your actual image source -->
+            <img src="{{url_for('static', filename='images/aperture_1.png')}}" alt="ISO Example" id="iso-cover-img" >
+        </div>
+        <div class="col-md-1">
+            <a href="/aperture/2" class="triangle-btn"></a>
+        </div>
+    </div>
+{% else %}
+
+<h2>Aperture {{ step }}</h2>
+<p style="white-space: pre-line;">{{ data.text }}</p>
+<img src="{{ url_for('static', filename=data.image) }}" alt="Aperture image" class="img-fluid my-4">
+
+{% endif %}
+
+<form method="POST">
+  {% if step > 1 %}
+    <button name="action" value="prev" class="btn btn-secondary">Back</button>
+  {% endif %}
+  {% if step < total_steps and step > 1%}
+    <button name="action" value="next" class="btn btn-primary float-end">Next</button>
+  {% elif step == total_steps %}
+    <a href="{{ url_for('shutter_speed', step=1) }}" class="btn btn-success float-end">Done</a>
+  {% endif %}
+</form>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+ {% extends "layout.html" %}
+
+
+ {% block styles %}
+  <style>
+        .click-hint {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+
+ {% endblock %}
+ 
+ 
+ 
+ 
+{% block content %}
+ 
+<h1 class="text-center mb-5">Camera Settings Overview</h1>
+        
+        
+<!-- Exposure Triangle Placeholder -->
+<div class="text-center my-5">
+    <h3>Exposure Triangle</h3>
+    <p class="click-hint">Click on parts of the triangle to zoom in</p>
+    <img src="{{ url_for('static', filename='images/overview.png')}}" class="zoom-image" alt="Exposure Triangle">
+</div>
+
+<div class="next-btn-container text-right">
+    <a href="exposure/cover" class="btn btn-primary px-4 py-2">Next</a>
+</div>
+
+        
+{% endblock %}

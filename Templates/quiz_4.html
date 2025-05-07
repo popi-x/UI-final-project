@@ -1,0 +1,41 @@
+{% extends "quiz.html" %}
+<!-- DEBUG: this is quiz_4.html -->
+
+{% block title %}Quiz 4: Judge if the given shutter speed matches with the scenario.{% endblock %}
+
+{% block question_body %}
+  <!-- Image row -->
+  <div class="row text-center mb-3">
+    {% for i in range(3) %}
+      <div class="col">
+        <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" class="img-fluid" alt="photo {{ i+1 }}">
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="row text-center mb-3">
+    <div class="col">
+      <p>1/10s</p>
+    </div>
+    <div class="col">
+      <p>1/1000s</p>
+    </div>
+    <div class="col">
+      <p>1/500s</p>
+    </div>
+  </div>
+<!--True or false-->
+<div>[Icons]</div>
+  <div class="row text-center mb-3">
+    {% for i in range(3) %}
+      <div class="col">
+        True or False
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- True ot False interaction for quiz 4 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>
+{% endblock %}

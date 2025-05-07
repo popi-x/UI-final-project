@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 
   {% block styles %} {% endblock %}
 </head>
@@ -24,19 +24,19 @@
                         <a class="nav-link active" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/exposure">Exposure</a>
+                        <a class="nav-link" href="/learn/exposure/cover">Exposure</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/iso">ISO</a>
+                        <a class="nav-link" href="/learn/iso/cover">ISO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/aperture">Aperture</a>
+                        <a class="nav-link" href="{{ url_for('aperture', step=1) }}">Aperture</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/shutter_speed">Shutter Speed</a>
+                        <a class="nav-link" href="{{ url_for('shutter_speed', step=1) }}">Shutter Speed</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/triangle">Exposure Triangle</a>
+                        <a class="nav-link" href="/learn/1">Exposure Triangle</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/quiz/1">Quiz</a>
@@ -46,7 +46,7 @@
         </div>
     </nav>
 
-  <div class="container">
+  <div class="container-fluid custom-vp-width my-5">
     {% block content %}
     {% endblock %}  
   </div>
