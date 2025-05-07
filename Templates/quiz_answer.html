@@ -19,9 +19,15 @@
     </div>
   </div>
   
-  {% block question_body %}
-    {% include "partials/quiz_" ~ question_id ~ "_body.html" %}
-  {% endblock %}
+  <!-- Image Row -->
+  <div class="row text-center mb-3">
+    {% for filename in image_files %}
+      <div class="col">
+        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid" alt="quiz image">
+      </div>
+    {% endfor %}
+  </div>
+
 
   {% block feedback_body %}
   <!-- Correct Answer row -->
