@@ -1,0 +1,165 @@
+body {
+    background-color: #F3F3F7;
+}
+
+/* Page 1 Style (left/right layout) */
+.shutter-page1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 2rem;
+    color: #333333;
+}
+
+.shutter-page1 .text {
+    flex: 1;
+}
+
+.shutter-page1 .text h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.shutter-page1 .text p {
+    font-family: 'Merriweather', serif;
+    font-size: 1.5rem;
+    color: #525B76;
+}
+
+.shutter-page1 .image {
+    flex: 1;
+    text-align: center;
+}
+
+.shutter-page1 .image img {
+    max-width: 400px;
+    height: auto;
+}
+
+/* Page 2+ Style */
+.shutter-centered {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 3rem;
+    text-align: left;
+    color: #333333;
+}
+
+.shutter-centered p {
+    font-family: 'Merriweather', serif;
+    font-size: 1.3rem;
+    color: #333333;
+    line-height: 1.8;
+}
+
+.shutter-centered p strong {
+    font-weight: bold;
+}
+
+.shutter-centered .image-centered {
+    text-align: center;
+}
+
+.shutter-centered .image-centered img {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+/* Button area */
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    padding-right: 50px;
+}
+
+.btn-next, .btn-secondary {
+    background-color: #4A4A4A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+}
+
+.btn-next:hover, .btn-secondary:hover {
+    background-color: #333333;
+}
+
+.btn-done {
+    background-color: #419FB4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+.btn-done:hover {
+    background-color: #2e7c91;
+}
+
+.shutter-centered .images-horizontal {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 20px;
+}
+
+
+.images-horizontal img {
+    width: auto;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+
+
+.note-box {
+    border: 1px solid #333333;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    font-family: 'Merriweather', serif;
+    color: #333333;
+    width: 250px;
+    word-wrap: break-word;
+    line-height: 1.6;
+}
+
+.images-with-note {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-top: 20px;
+}
+
+.single-image img {
+    max-width: 800px; /* This makes the image narrower and inside navbar width */
+    width: 100%;
+    height: auto;
+}
+
+.note-box-side {
+    border: 1px solid #333333;
+    padding: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    font-family: 'Merriweather', serif;
+    color: #333333;
+    width: 200px; /* was 220px before, make it smaller */
+    line-height: 1.5;
+    font-size: 0.1rem; /* make text slightly smaller too so fits better */
+}
+
+.images-horizontal img {
+    max-width: 500px;
+    width: auto;
+    height: auto;
+}
+
+.images-horizontal img.right-image {
+    max-width: 350px;
+}

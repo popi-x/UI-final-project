@@ -1,23 +1,26 @@
 [
-    {
-      "title": "Shutter Speed",
-      "text": "Freeze the moment or capture motion - your choice.",
-      "images": ["images/shutter_1.png"]
-    },
-    {
-      "title": "What is Shutter Speed?",
-      "text": "Shutter speed is the amount of time the camera's shutter is open. A fast shutter speed (like 1/1000s) freezes motion, while a slow shutter speed (like 1/30s) captures blur and movement.\n\nThe pinwheel shows how fast and slow shutter speeds create different visual effects.",
-      "images": ["images/shutter_2.png", "images/shutter_3.png"]
-    },
-    {
-      "title": "How It Affects Real Photos",
-      "text": "Fast shutter: typically used to capture motion, such as such as a starry night or a flowing waterfall. \nSlow shutter: ideal for freezing moments, like the intense moments of athletes competing. \n The right shutter speed can balance both freezing the moment and capturing motion in a single photo.",
-      "images": ["images/shutter_4.png", "images/shutter_5.png"]
-    },
-    {
-      "title": "Recommended Shutter Speeds",
-      "text": "Use these speeds as guides:\n\n 1/1000s - sports\n 1/250s - portraits\n 1/30s - indoor\n 1/15s - night shots\n 10s - long exposures",
-      "images": ["images/shutter_6.png"]
-    }
-  ]
+  {
+    "title": "Shutter Speed",
+    "text": "Freeze the moment or capture motion — your choice.",
+    "images": ["images/shutter_1.png"]
+  },
+  {
+    "title": "",
+    "text": "<strong>Shutter speed</strong> is the amount of time the camera's shutter is open. A <strong>fast shutter speed</strong> (like <strong>1/1000s</strong>) freezes motion, while a <strong>slow shutter speed</strong> (like <strong>1/30s</strong>) captures blur and movement.\n\nThe pinwheel shows how fast and slow shutter speeds create different visual effects.",
+    "images": ["images/shutter_2.png", "images/shutter_3.png"],
+    "small_right": true
+
+  },
+  {
+    "title": "",
+    "text": "<strong>Fast shutter</strong>: ideal for freezing moments, like the intense moments of athletes competing. \n<strong>Slow shutter</strong>: typically used to capture motion, such as a starry night or a flowing waterfall.\n\nThe right shutter speed can balance both freezing the moment and capturing motion in a single photo.",
+    "images": ["images/shutter_4.png", "images/shutter_5.png"]
+  },
   
+  {
+    "title": "",
+    "text": "Recommended shutter speeds for specific scenarios:",
+    "note": "When the shutter speed gets too slow, it becomes difficult to keep the camera steady by hand, and that's when you need a tripod!",
+    "images": ["images/shutter_6.png"]
+}
+]

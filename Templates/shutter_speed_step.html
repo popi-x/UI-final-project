@@ -1,47 +1,74 @@
 {% extends "layout.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/shutter_speed.css') }}">
+{% endblock %}
+
 {% block content %}
 
 {% if step == 1 %}
-  <div class="cover row  align-items-center">
-        <div class="col-md-6">
+    <div class="shutter-page1">
+        <div class="text">
             <h1>Shutter Speed</h1>
-            <p class="sub-title">Freeze the moment or capture motion - your choice.
-    </p>
+            <p>Freeze the moment or capture motion — your choice.</p>
         </div>
 
-        <div class="image-content col-md-5 text-center">
-            <!-- Right side image - replace with your actual image source -->
-            <img src="{{url_for('static', filename='images/shutter_1.png')}}" alt="ISO Example" id="iso-cover-img" >
-        </div>
-        <div class="col-md-1">
-            <a href="/shutter_speed/2" class="triangle-btn"></a>
+        <div class="image">
+            <img src="{{ url_for('static', filename='images/shutter_1.png') }}" alt="Shutter Speed Cover">
+            <form method="POST" class="button-container">
+                <button name="action" value="next" class="btn-next">Next</button>
+            </form>
         </div>
     </div>
+
 {% else %}
 
-<h2>{{ data.title }}</h2>
+<div class="shutter-centered">
+    {% if data.title %}
+    <h2>{{ data.title }}</h2>
+    {% endif %}
 
-<p style="white-space: pre-line;">{{ data.text }}</p>
+    <p style="white-space: pre-line;">{{ data.text | safe }}</p>
 
-<div class="row">
-  {% for img in data.images %}
-    <div class="col-md-6">
-      <img src="{{ url_for('static', filename=img) }}" alt="Shutter speed visual" class="img-fluid my-3">
+    {% if data.images|length == 2 %}
+    <div class="images-horizontal">
+        {% for img in data.images %}
+            <img src="{{ url_for('static', filename=img) }}" alt="Shutter speed visual" 
+                {% if data.small_right and loop.index == 2 %}class="right-image"{% endif %}>
+        {% endfor %}
     </div>
-  {% endfor %}
+    
+
+
+    {% elif data.images|length == 1 and data.note %}
+    <div class="images-with-note">
+        <div class="single-image">
+            <img src="{{ url_for('static', filename=data.images[0]) }}" alt="Shutter speed visual">
+        </div>
+        <div class="note-box-side">
+            <p>{{ data.note }}</p>
+        </div>
+    </div>
+
+    {% else %}
+    <div class="image-centered">
+        {% for img in data.images %}
+            <img src="{{ url_for('static', filename=img) }}" alt="Shutter speed visual" class="img-fluid my-4">
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="POST" class="button-container">
+        {% if step > 1 %}
+            <button name="action" value="prev" class="btn-secondary">Back</button>
+        {% endif %}
+        {% if step < total_steps %}
+            <button name="action" value="next" class="btn-next">Next</button>
+        {% elif step == total_steps %}
+            <a href="{{ url_for('triangle', step_id=1) }}" class="btn-done">Done</a>
+        {% endif %}
+    </form>
 </div>
 
 {% endif %}
-
-<form method="POST">
-  {% if step > 1 %}
-    <button name="action" value="prev" class="btn btn-secondary">Back</button>
-  {% endif %}
-  {% if step < total_steps and step > 1%}
-    <button name="action" value="next" class="btn btn-primary float-end">Next</button>
-  {% elif step == total_steps %}
-    <a href="{{ url_for('triangle', step_id=1) }}" class="btn btn-success float-end">Done</a>
-  {% endif %}
-</form>
 
 {% endblock %}
