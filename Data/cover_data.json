@@ -16,20 +16,20 @@
     "aperture": {
     "title": "Aperture",
     "subtitle": "Why is my background blurred?",
-    "img": "images/aperture_cover.png",
+    "img": "images/aperture_1.png",
     "next_link": "/learn/aperture/1"
     },
     "shutter_speed": {
         "title": "Shutter Speed",
         "subtitle": "Freeze or blur? Decide the motion.",
-        "img": "images/shutter_speed_cover.png",
+        "img": "images/shutter_1.png",
         "next_link": "/learn/shutter_speed/1"
     }, 
     
     "exposure_triangle": {
         "title": "Exposure Triangle",
         "subtitle": "Too bright! ... No no no! Too dark now!",
-        "img": "images/exposure_cover.png",
+        "img": "images/exposure_triangle_1.png",
         "next_link": "/exposure_triangle/1"
     }
 
