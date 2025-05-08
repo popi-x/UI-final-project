@@ -92,6 +92,8 @@
 
 {# ---------- PAGE 6 ---------- #}
 {% elif step == 6 %}
+<div class="exposure-centered">
+
 <div class="page6-wrapper">
   <div class="page6-main">
      <p style="white-space:pre-line;">{{ data.text | safe }}</p>
@@ -120,16 +122,17 @@
     <p class="image-footnote">{{ data.side_note_image_caption }}</p>
     {% endif %}
     {% endif %}
-
   </div>
 </div>
 
-<div class="exposure-centered">
-    <form method="POST" class="button-container">
+<div class="button-container-right">
+    <form method="POST">
         <button name="action" value="prev" class="btn-secondary">Back</button>
         <button name="action" value="next" class="btn-next">Next</button>
     </form>
 </div>
+
+
 
 
 {% elif step == 7 %}
