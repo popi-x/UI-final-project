@@ -112,12 +112,12 @@
   {% endif %}
 
   <!-- Feedback -->
-  <p class="fs-5 fw-bold text-center">
+  <p id="answer-feedback-wrapper" class="fs-5 fw-bold text-center">
     {{ '✅ Correct!' if is_correct else '❌ Try again next time!' }}
   </p>
 
   <!-- Show Answer / Next -->
-  <div class="text-center mb-3">
+  <div id="answer-btn-wrapper">
     <button id="show-answer-btn" class="btn btn-outline-primary">Show Answer</button>
     <button id="next-btn" class="btn btn-success">Next</button>
   </div>
