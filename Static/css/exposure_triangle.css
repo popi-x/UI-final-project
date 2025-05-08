@@ -1,0 +1,223 @@
+body {
+    background-color: #F3F3F7;
+}
+
+.exposure-page1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 2rem;
+    color: #333333;
+}
+
+.exposure-page1 .text {
+    flex: 1;
+}
+
+.exposure-page1 .text h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.exposure-page1 .text p {
+    font-family: 'Merriweather', serif;
+    font-size: 1.5rem;
+    color: #525B76;
+}
+
+.exposure-page1 .image {
+    flex: 1;
+    text-align: center;
+    padding-left: 30px;
+}
+
+.exposure-page1 .image img {
+    max-width: 600px;
+    height: auto;
+}
+
+.exposure-centered {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 3rem;
+    text-align: left;
+    color: #333333;
+}
+
+.exposure-centered h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}
+
+.exposure-centered p {
+    font-family: 'Merriweather', serif;
+    font-size: 1.3rem;
+    color: #333333;
+    line-height: 1.8;
+}
+
+.exposure-centered p strong {
+    font-weight: bold;
+}
+
+.exposure-centered .image-centered {
+    text-align: center;
+}
+
+.exposure-centered img {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.choice-container {
+    margin-top: 20px;
+}
+
+.choice-container .form-check {
+    margin-bottom: 10px;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;  /* ➡️ This pushes the button to bottom right */
+    margin-top: 30px;
+    padding-right: 50px;
+}
+
+.btn-next, .btn-secondary {
+    background-color: #4A4A4A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+}
+
+.btn-next:hover, .btn-secondary:hover {
+    background-color: #333333;
+}
+
+.btn-done {
+    background-color: #419FB4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+
+.btn-done:hover {
+    background-color: #2e7c91;
+}
+
+.exposure-sidebyside {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 2rem;
+    color: #333333;
+}
+
+.exposure-sidebyside .text {
+    flex: 7;
+    padding-right: 40px;
+    font-family: 'Merriweather', serif;
+    font-size: 1.3rem;
+    color: #333333;
+    line-height: 1.8;
+}
+
+.exposure-sidebyside .image {
+    flex: 3;
+    text-align: center;
+}
+
+.exposure-sidebyside .image img {
+    max-width: 600px;
+    height: auto;
+}
+
+.image-footnote {
+    text-align: center;
+    font-size: 0.65rem;   /* SMALLER! This will now look like real footnote size */
+    color: #aaa;          /* LIGHTER GRAY so it looks less prominent */
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.big-image {
+    max-width: 800px;
+}
+
+.image-block {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.image-block img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+
+.image-caption {
+    color: #525B76;
+    font-size: 1rem;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* --- page-6 specific helpers --- */
+.page6-wrapper        { display:flex; gap:40px; max-width:1100px; margin:40px auto; }
+.page6-main           { flex:7; }
+.page6-main p         { font-size:1.3rem; line-height:1.8; }
+.page6-note           { flex:3; font-size:.95rem; color:#555; }
+.page6-note img       { max-width:100%; height:auto; margin-top:10px; }
+.page6-note a         { color:#0076ff; text-decoration:underline; }
+
+.image-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.image-column .image-block img {
+    max-width: 250px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.camera-container {
+    position: relative;
+}
+
+.camera-image {
+    width: 100%;
+    max-width: 700px;
+}
+
+.clickable-part {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0.2);  /* Optional for debug → shows red overlay so you can test */
+}
+
+.camera-info {
+    font-size: 1.2rem;
+    color: #444;
+    margin-top: 20px;
+}
+.page6-footer {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 3rem;
+}
