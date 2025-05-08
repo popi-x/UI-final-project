@@ -50,40 +50,64 @@
   {% endif %}
 
   {% if question_id == 6 %}
-  {% set questions = [
-    "If I increase ISO, the aperture will decrease automatically",
-    "If I can adjust either ISO or shutter speed to increase the EV (both are unrelated to the features you want to capture), I should first adjust the shutter speed",
-    "Increasing the aperture (wider) results in a shallow depth of field",
-    "ISO will not affect the quality of the image",
-    "If I decrease shutter speed (slower) and the aperture remains unchanged, I may need to increase the ISO"
-  ] %}
+{% set questions = [
+  "If I increase ISO, the aperture will decrease automatically",
+  "If I can adjust either ISO or shutter speed to increase the EV (both are unrelated to the features you want to capture), I should first adjust the shutter speed",
+  "Increasing the aperture (wider) results in a shallow depth of field",
+  "ISO will not affect the quality of the image",
+  "If I decrease shutter speed (slower) and the aperture remains unchanged, I may need to increase the ISO"
+] %}
 
-  <div class="row mb-4">
-    {% for question in questions %}
-      {% set user = user_answers[loop.index0] %}
-      {% set correct = correct_answers[loop.index0] %}
-      {% set is_correct = (user == correct) %}
-      <div class="col-12 mb-3">
-        <div class="border p-3 rounded bg-light">
-          <div class="row align-items-center">
-            <div class="col-md-9">
-              <p class="mb-1"><strong>{{ loop.index }}.</strong> {{ question }}</p>
-            </div>
-            <div class="col-md-3 text-end btn-group">
-              <label class="btn btn-outline-dark {% if user == 'True' %}active{% endif %}">
+<div class="row mb-4">
+  {% for question in questions %}
+    {% set user = user_answers[loop.index0] %}
+    {% set correct = correct_answers[loop.index0] %}
+    {% set is_correct = (user == correct) %}
+    <div class="col-12 mb-3">
+      <div class="border p-3 rounded bg-light">
+        <div class="row align-items-center">
+          <div class="col-md-9">
+            <p class="mb-0"><strong>{{ loop.index }}.</strong> {{ question }}</p>
+          </div>
+          <div class="col-md-3 text-end" data-slot="slot_{{ loop.index0 }}">
+            <div class="btn-group w-100" role="group">
+              <label class="btn btn-outline-dark w-50 {% if user == 'True' %}active{% endif %}">
                 <input type="radio" disabled {{ 'checked' if user == 'True' }}> True
               </label>
-              <label class="btn btn-outline-dark {% if user == 'False' %}active{% endif %}">
+              <label class="btn btn-outline-dark w-50 {% if user == 'False' %}active{% endif %}">
                 <input type="radio" disabled {{ 'checked' if user == 'False' }}> False
               </label>
             </div>
+          
+            <!-- Show below, not inside .btn-group -->
+            <div class="correct-answer-line d-none mt-2 text-end">
+              <small><strong>Correct Answer:</strong> {{ correct }}</small>
+            </div>
           </div>
+          
+                   
         </div>
       </div>
-    {% endfor %}
-  </div>
-{% endif %}
+    </div>
+  {% endfor %}
+</div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const qid = parseInt(document.getElementById("quiz-container").dataset.questionId);
+    if (qid === 6) {
+      const btn = document.getElementById("show-answer-btn");
+      if (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll(".correct-answer-line").forEach(el => {
+            el.classList.remove("d-none");
+          });
+        });
+      }
+    }
+  });
+</script>
+{% endif %}
 
 
   <!-- User Answer row -->

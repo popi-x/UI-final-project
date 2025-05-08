@@ -1,6 +1,6 @@
 $(document).ready(function () {
   const qid = getQuestionId();
-  const LAST_QUESTION_ID = 5;
+  const LAST_QUESTION_ID = 9;
 
   function getQuestionId() {
     const container = document.getElementById("quiz-container");
