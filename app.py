@@ -23,17 +23,17 @@ def home():
 def overview():
     return render_template("overview.html")
 
-@app.route("/learn/exposure/cover")
-def exposure():
-    return render_template("exposure_cover.html")
+@app.route("/learn/<string:section>/cover")
+def exposure(section):
+    with open("data/cover_data.json") as f:
+        data = json.load(f)
+    return render_template("cover.html", section=section, data=data)
+
 
 @app.route("/learn/exposure/1")
 def exposure_1():
     return render_template("exposure_1.html")
 
-@app.route("/learn/iso/cover")
-def iso_cover():
-    return render_template("iso_cover.html")
 
 @app.route("/learn/iso/1")
 def iso_1():
@@ -70,6 +70,7 @@ def triangle(step_id):
             return redirect(url_for("quiz_view", question_id=1))
 
     return render_template("triangle_step.html", step=step_id)
+
 
 
 @app.route("/aperture/<int:step>", methods=["GET", "POST"])

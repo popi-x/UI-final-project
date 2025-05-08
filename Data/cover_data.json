@@ -1,0 +1,15 @@
+{
+    "exposure":{
+        "title": "Exposure",
+        "subtitle": "Too bright! ... No no no! Too dark now!",
+        "img": "images/exposure_cover.png",
+        "next_link": "/learn/exposure/1"
+    },
+
+    "iso":{
+        "title": "ISO",
+        "subtitle": "What are those particles in my photos?",
+        "img": "images/iso_cover.png",
+        "next_link": "/learn/iso/1"
+    }
+}
