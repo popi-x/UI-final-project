@@ -86,6 +86,7 @@ body {
     color: #525B76;
     font-size: 1.3rem;
     margin-bottom: 1rem;
+    font-family: 'Merriweather', serif;
   }
   
   .btn-learn {
@@ -93,7 +94,7 @@ body {
     color: white;
     font-family: 'Merriweather', serif;
     font-weight: bold;
-    padding: 1rem 3rem;
+    padding: 1rem 4rem;
     border-radius: 8px;
     font-size: 1.3rem;
     text-decoration: none;
@@ -104,19 +105,22 @@ body {
   
   /* ---------- RIGHT IMAGE BLOCK ---------- */
  
+
   .right {
     flex: 1 1 50%;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;   /* ⬅️ moves image upward */
-    padding-top: 1rem;         /* optional: fine-tune upward shift */
+    justify-content: flex-start;  /* Align image leftward */
+    align-items: center;
+    padding: 0;
   }
-  
+
   .right img {
-    max-width: 120%;
-    height: auto;              /* ⬅️ make the image bigger */
+    width: 3500px;              /* ⬅️ make the image bigger */
+    max-width: 170%;
     object-fit: contain;
   }
+  
+  
   
   .move-down {
     margin-top: 1.5rem;     /* adjust how far down it moves */

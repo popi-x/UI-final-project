@@ -8,11 +8,25 @@ CORS(app)
 
 # Correct answers for each quiz question
 correct_answers = {
+    1: ['-4', '0', '+3', '+2', '-1', '-3'],
+    2: ['12800', '800', '1600', '6400'],
+    3: ['f1.4'],  # Example — you can add complexity later
+    4: ['False', 'False', 'True'],
+    5: ['f4.8 1/15s ISO1600', 'f7.1 1/30s ISO1250', 'f5.6 1/2000s ISO800']
+}
+
+draggable_options = {
     1: ['-4', '-3', '-1', '0', '+2', '+3'],
     2: ['800', '1600', '6400', '12800'],
-    3: ['f/1.4'],  # Example — you can add complexity later
-    4: ['1/1000s', '1/500s'],
     5: ['f7.1 1/30s ISO1250', 'f4.8 1/15s ISO1600', 'f5.6 1/2000s ISO800']
+}
+
+quiz_questions = {
+    1: "Drag and drop the correct exposure value below each photo",
+    2: "Drag and drop the correct ISO used in each photo",
+    3: "Adjust the aperture slider so that only the desired object appears sharp and in focus",
+    4: "Judge if the given shutter speed matches with the scenario",
+    5: "Match the photos with the correct settings"
 }
 
 @app.route("/")
@@ -118,10 +132,27 @@ def shutter_speed(step):
 
 @app.route("/quiz/<int:question_id>")
 def quiz_view(question_id):
-    draggable_values = correct_answers.get(question_id, [])
+    draggable_values = draggable_options.get(question_id, [])
     template_name = f"quiz_{question_id}.html"
     percent = int((question_id / len(correct_answers)) * 100)
-    return render_template(template_name, draggable_values=draggable_values, question_id=question_id, progress_percent=percent)
+
+    # Define image files per quiz
+    image_sets = {
+        1: ["quiz1_img1.png", "quiz1_img2.png", "quiz1_img3.png", "quiz1_img4.png", "quiz1_img5.png", "quiz1_img6.png"],
+        2: ["quiz2_img1.png", "quiz2_img2.png", "quiz2_img3.png", "quiz2_img4.png"],
+        3: ["quiz3_img1.png"],
+        4: ["quiz4_img1.png", "quiz4_img2.png", "quiz4_img3.png"],
+        5: ["quiz5_img1.png", "quiz5_img2.png", "quiz5_img3.png"]
+    }
+
+    image_files = image_sets.get(question_id, [])
+
+    return render_template(template_name,
+                           draggable_values=draggable_values,
+                           image_files=image_files,
+                           question_id=question_id,
+                           progress_percent=percent,
+                           quiz_questions=quiz_questions)
 
 
 @app.route("/quiz/<int:question_id>/answer", methods=["POST"])
@@ -138,19 +169,25 @@ def quiz_post(question_id):
 def quiz_feedback(question_id):
     correct = correct_answers.get(question_id, [])
     user_data = session.get(f"user_answers_{question_id}", {})
-    #DEBUG
-    print(f"[DEBUG] Received answers for Quiz {question_id}: {user_data}")
 
-    # Build aligned lists for frontend
     user_answers = [user_data.get(f"slot_{i}") for i in range(len(correct))]
     correctness = [user_answers[i] == correct[i] for i in range(len(correct))]
     is_correct = all(correctness)
 
-    # Store score
     session[f"score_{question_id}"] = sum(correctness)
-
-    # [EDIT]Calculate progress bar width
     percent = int((question_id / len(correct_answers)) * 100)
+
+    # Load same images used in quiz
+    image_sets = {
+        1: ["quiz1_img1.png", "quiz1_img2.png", "quiz1_img3.png", "quiz1_img4.png", "quiz1_img5.png", "quiz1_img6.png"],
+        2: ["quiz2_img1.png", "quiz2_img2.png", "quiz2_img3.png", "quiz2_img4.png"],
+        3: ["quiz3_img1.png"],
+        4: ["quiz4_img1.png", "quiz4_img2.png", "quiz4_img3.png"],
+        5: ["quiz5_img1.png", "quiz5_img2.png", "quiz5_img3.png"]
+    }
+
+    image_files = image_sets.get(question_id, [])
+
     return render_template(
         "quiz_answer.html",
         question_id=question_id,
@@ -158,8 +195,11 @@ def quiz_feedback(question_id):
         correct_answers=correct,
         correctness=correctness,
         is_correct=is_correct,
-        progress_percent=percent
+        progress_percent=percent,
+        image_files=image_files,
+        quiz_questions=quiz_questions
     )
+
 
 @app.route("/quiz/results")
 def results():
@@ -178,7 +218,5 @@ def results():
     )
 
 
-
-# ✅ ADD THIS to make it run properly at port 5001
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

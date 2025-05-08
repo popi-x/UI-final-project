@@ -1,16 +1,18 @@
 {% extends "quiz.html" %}
 <!-- DEBUG: this is quiz_1.html -->
 
-{% block title %}Quiz 1: Drag and drop the correct exposure value below each photo{% endblock %}
+{% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
+
 
 {% block question_body %}
   <!-- Image row -->
   <div class="row text-center mb-3">
-    {% for i in range(6) %}
+    {% for filename in image_files %}
       <div class="col">
-        <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" class="img-fluid" alt="photo {{ i+1 }}">
+        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid" alt="quiz image">
       </div>
     {% endfor %}
+
   </div>
 
   <!-- Dropzone row -->

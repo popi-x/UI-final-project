@@ -18,10 +18,27 @@
       {{ progress_percent }}%
     </div>
   </div>
+
+  <!--Quiz Question Row-->
+  <h2 id="quiz-question" class="mb-3">{% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}</h2>
   
-  {% block question_body %}
-    {% include "partials/quiz_" ~ question_id ~ "_body.html" %}
-  {% endblock %}
+  <!-- Image Row -->
+  <div class="row text-center mb-3">
+    {% for filename in image_files %}
+      <div class="col">
+        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid" alt="quiz image">
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- User Answer row -->
+  <div class="row text-center mb-3">
+    {% for i in range(user_answers | length) %}
+      <div class="col">
+        <div class="dropzone" id="dropzone-{{ i }}">{{ user_answers[i] }}</div>
+      </div>
+    {% endfor %}
+  </div>
 
   {% block feedback_body %}
   <!-- Correct Answer row -->
