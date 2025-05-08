@@ -44,7 +44,7 @@ def iso_1():
 def triangle_redirect():
     return redirect(url_for("exposure_triangle", step_id=1))
 
-@app.route("/exposure_triangle/<int:step_id>", methods=["GET", "POST"], endpoint="exposure_triangle")
+@app.route("/learn/exposure_triangle/<int:step_id>", methods=["GET", "POST"], endpoint="exposure_triangle")
 def triangle(step_id):
     with open("data/exposure_triangle.json") as f:
         content = json.load(f)
@@ -97,7 +97,7 @@ def triangle(step_id):
 
     return render_template("exposure_triangle.html", step=step_id, total_steps=total_steps, data=content[step_id - 1], feedback=feedback)
 
-@app.route("/aperture/<int:step>", methods=["GET", "POST"])
+@app.route("/learn/aperture/<int:step>", methods=["GET", "POST"])
 def aperture(step):
     import json
     from flask import render_template, request, session, redirect, url_for
@@ -120,7 +120,7 @@ def aperture(step):
     data = content[step - 1]
     return render_template("aperture_step.html", step=step, total_steps=len(content), data=data)
 
-@app.route("/shutter_speed/<int:step>", methods=["GET", "POST"])
+@app.route("/learn/shutter_speed/<int:step>", methods=["GET", "POST"])
 def shutter_speed(step):
     with open("data/shutter_speed_data.json") as f:
         content = json.load(f)
