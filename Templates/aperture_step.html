@@ -40,7 +40,7 @@
         {% if step < total_steps %}
             <button name="action" value="next" class="btn-next">Next</button>
         {% elif step == total_steps %}
-            <a href="{{ url_for('shutter_speed', step=1) }}" class="btn-done">Done</a>
+            <a href="{{ url_for('shutter_speed', step=1) }}" class="btn-next">Next</a>
         {% endif %}
     </form>
 </div>
