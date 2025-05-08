@@ -53,13 +53,9 @@
   color: #000;
 }
 
-.quiz-5-image {
-  max-height: 350px;
-  width: auto;
-  object-fit: contain;
-}
 
-.quiz-3-image {
+
+.quiz-image {
   max-height: 350px;
   object-fit: contain;
 }

@@ -13,7 +13,7 @@
   <div class="row text-center mb-3">
       <div class="col">
         {% if image_files %}
-          <img src="{{ url_for('static', filename='images/' ~ image_files[0]) }}" class="w-50 quiz-3-image" alt="{{ image_files[0] }}">
+          <img src="{{ url_for('static', filename='images/' ~ image_files[0]) }}" class="w-50 quiz-image" alt="{{ image_files[0] }}">
         {% else %}
           <p><em>No image available</em></p>
         {% endif %}
