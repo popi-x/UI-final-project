@@ -68,7 +68,7 @@ def triangle(step_id):
                         return render_template("exposure_triangle.html", step=step_id, total_steps=total_steps, data=content[step_id - 1], feedback=feedback)
 
             # ---------- Special logic for step 5 ----------
-            if step_id == 5:
+            if step_id == 4:
                 choice = request.form.get("answer")
                 if choice:
                     session["choice5"] = choice
@@ -77,7 +77,7 @@ def triangle(step_id):
                         return render_template("exposure_triangle.html", step=step_id, total_steps=total_steps, data=content[step_id - 1], feedback=feedback)
 
             # ---------- Special logic for step 6 ----------
-            if step_id == 6:
+            if step_id == 5:
                 choice = request.form.get("answer")
                 if choice:
                     session["choice6"] = choice
@@ -203,6 +203,17 @@ def results():
     )
 
 
+@app.route("/aperture")
+def aperture_cover():
+    return render_template("cover.html", section="aperture", data=cover_data)
+
+@app.route("/shutter_speed")
+def shutter_speed_cover():
+    return render_template("cover.html", section="shutter_speed", data=cover_data)
+
+@app.route("/exposure_triangle")
+def exposure_triangle_cover():
+    return render_template("cover.html", section="exposure_triangle", data=cover_data)
 
 
 # ✅ ADD THIS to make it run properly at port 5001

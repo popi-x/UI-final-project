@@ -1,9 +1,5 @@
 [
-  {
-    "title": "Camera Basics: Aperture",
-    "text": "Why is my background blurred?",
-    "image": "images/aperture_1.png"
-  },
+ 
   {
     "title": "",
     "text": "<strong>Aperture</strong> is the opening in a lens that controls how much light enters the camera—wider apertures (like <strong>f/1.8</strong>) let in more light and create a <strong>blurry background</strong>, while narrower apertures (like <strong>f/16</strong>) let in less light and keep more of the scene in focus.",

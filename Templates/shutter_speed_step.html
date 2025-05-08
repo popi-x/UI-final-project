@@ -5,23 +5,6 @@
 
 {% block content %}
 
-{% if step == 1 %}
-    <div class="shutter-page1">
-        <div class="text">
-            <h1>Shutter Speed</h1>
-            <p>Freeze the moment or capture motion — your choice.</p>
-        </div>
-
-        <div class="image">
-            <img src="{{ url_for('static', filename='images/shutter_1.png') }}" alt="Shutter Speed Cover">
-            <form method="POST" class="button-container">
-                <button name="action" value="next" class="btn-next">Next</button>
-            </form>
-        </div>
-    </div>
-
-{% else %}
-
 <div class="shutter-centered">
     {% if data.title %}
     <h2>{{ data.title }}</h2>
@@ -36,8 +19,6 @@
                 {% if data.small_right and loop.index == 2 %}class="right-image"{% endif %}>
         {% endfor %}
     </div>
-    
-
 
     {% elif data.images|length == 1 and data.note %}
     <div class="images-with-note">
@@ -58,19 +39,17 @@
     {% endif %}
 
     <form method="POST" class="button-container">
-        {% if step > 1 %}
+        {% if step == 1 %}
+            <a href="/learn/shutter_speed/cover" class="btn-secondary">Back</a>
+        {% elif step > 1 %}
             <button name="action" value="prev" class="btn-secondary">Back</button>
         {% endif %}
         {% if step < total_steps %}
             <button name="action" value="next" class="btn-next">Next</button>
         {% elif step == total_steps %}
-           
-            <a href="{{ url_for('exposure_triangle', step_id=1) }}" class="btn-next">Next</a>
-
+            <a href="/learn/exposure_triangle/cover" class="btn-next">Next</a>
         {% endif %}
     </form>
 </div>
-
-{% endif %}
 
 {% endblock %}

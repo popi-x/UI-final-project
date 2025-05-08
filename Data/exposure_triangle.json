@@ -1,11 +1,5 @@
 [
     {
-      "title": "Exposure Triangle Overview",
-      "text": "The exposure triangle includes ISO, shutter speed, and aperture. This triangle visualizes how each setting affects exposure: ISO controls sensor sensitivity, aperture controls depth of field and brightness, and shutter speed controls motion blur and brightness.",
-      "image": "images/exposure_triangle_1.png",
-      "image_caption": "Exposure Triangle visual diagram showing ISO, Aperture, and Shutter Speed."
-    },
-    {
       "title": "",
       "text": "Earlier, we introduced the idea of exposure—you might’ve been wondering how exactly it can be adjusted. The answer is by adjusting parameters we have learnt in previous sections: ISO, aperture, and shutter speed.\n\nWe use <strong>exposure triangle</strong> to refer to the interplay of them. The figure on the right hand side is an example of such triangle. It illustrates how each setting influences exposure—for example, increasing ISO results in a higher EV.",
       "image": "images/exposure_triangle_2.png",

@@ -5,23 +5,9 @@
 
 {% block content %}
 
+
 {# ---------- PAGE 1 ---------- #}
 {% if step == 1 %}
-<div class="exposure-page1">
-    <div class="text">
-        <h1>Exposure Triangle</h1>
-        <p>Time to combine what you learnt!</p>
-    </div>
-    <div class="image">
-        <img src="{{ url_for('static', filename='images/exposure_triangle_1.png') }}" alt="Exposure Triangle Intro">
-    </div>
-</div>
-<form method="POST" class="button-container">
-    <button name="action" value="next" class="btn-next">Next</button>
-</form>
-
-{# ---------- PAGE 2 ---------- #}
-{% elif step == 2 %}
 <div class="exposure-sidebyside">
     <div class="text">
         <h2>{{ data.title }}</h2>
@@ -32,12 +18,13 @@
     </div>
 </div>
 <form method="POST" class="button-container">
-    <button name="action" value="prev" class="btn-secondary">Back</button>
+    
+    <a href="/learn/exposure_triangle/cover" class="btn-secondary">Back</a>
     <button name="action" value="next" class="btn-next">Next</button>
 </form>
 
-{# ---------- PAGE 3 ---------- #}
-{% elif step == 3 %}
+{# ---------- PAGE 2 ---------- #}
+{% elif step == 2 %}
 <div class="exposure-centered">
     {% if data.title %}
     <h2>{{ data.title }}</h2>
@@ -60,8 +47,8 @@
     <button name="action" value="next" class="btn-next">Next</button>
 </form>
 
-{# ---------- PAGE 4 ---------- #}
-{% elif step == 4 %}
+{# ---------- PAGE 3 ---------- #}
+{% elif step == 3 %}
 <div class="exposure-sidebyside">
     <div class="text">
         {% if data.title %}
@@ -90,8 +77,8 @@
     <button name="action" value="next" class="btn-next">Next</button>
 </form>
 
-{# ---------- PAGE 6 ---------- #}
-{% elif step == 6 %}
+{# ---------- PAGE 5 ---------- #}
+{% elif step == 5 %}
 <div class="exposure-centered">
 
 <div class="page6-wrapper">
@@ -135,7 +122,7 @@
 
 
 
-{% elif step == 7 %}
+{% elif step == 6 %}
 <div class="exposure-sidebyside">
     <div class="text">
         {% if data.title %}
@@ -170,7 +157,7 @@
     <button name="action" value="next" class="btn-next">Next</button>
 </form>
 
-{% elif step == 8 %}
+{% elif step == 7 %}
 <div class="exposure-centered">
     <h2>How does this work on a real camera?</h2>
     <p>Click on different parts of the camera. What does this part control?</p>

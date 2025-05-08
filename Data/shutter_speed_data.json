@@ -1,9 +1,5 @@
 [
-  {
-    "title": "Shutter Speed",
-    "text": "Freeze the moment or capture motion — your choice.",
-    "images": ["images/shutter_1.png"]
-  },
+  
   {
     "title": "",
     "text": "<strong>Shutter speed</strong> is the amount of time the camera's shutter is open. A <strong>fast shutter speed</strong> (like <strong>1/1000s</strong>) freezes motion, while a <strong>slow shutter speed</strong> (like <strong>1/30s</strong>) captures blur and movement.\n\nThe pinwheel shows how fast and slow shutter speeds create different visual effects.",
