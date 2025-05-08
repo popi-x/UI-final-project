@@ -8,7 +8,7 @@
   <div class="row text-center mb-3">
     {% for filename in image_files %}
       <div class="col">
-        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid" alt="{{ filename }}">
+        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid quiz-5-image" alt="{{ filename }}">
       </div>
     {% endfor %}
   </div>

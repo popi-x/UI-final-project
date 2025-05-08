@@ -51,3 +51,15 @@
   background: linear-gradient(90deg, #DBFFDB 0%, #A8EBA8 100%);
   color: #000;
 }
+
+.quiz-5-image {
+  max-height: 350px;
+  width: auto;
+  object-fit: contain;
+}
+
+.quiz-3-image {
+  max-height: 350px;
+  object-fit: contain;
+}
+
