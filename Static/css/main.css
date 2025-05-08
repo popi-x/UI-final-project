@@ -53,9 +53,8 @@ body {
 
   .homepage-layout {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 80%;
+    gap: 2rem;
+    max-width: 90%;
     height: calc(100vh - 330px);  /* ⬅️ was too tall before */
     margin: 0 auto;
     padding: 1rem 2rem;           /* ⬅️ tighter top/bottom padding */
@@ -64,23 +63,25 @@ body {
   
   /* ---------- LEFT TEXT BLOCK ---------- */
   .left {
-    flex: 1;
+    flex: 1 1 45%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 1.2rem;
-    padding-left: 10rem;
-    padding-right: 20rem;
+    padding: 0 3vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
   
   .title {
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    font-size: 8rem;
+    font-size: clamp(2.5rem, 6vw, 8rem); /* Responsive */
+    /*font-size: 8rem;*/
     margin-bottom: 0.5rem;
   }
   
   .subtitle {
+    /*font-size: clamp(1rem, 2.5vw, 1.5rem);*/
     font-weight: normal;
     color: #525B76;
     font-size: 1.3rem;
@@ -104,7 +105,7 @@ body {
   /* ---------- RIGHT IMAGE BLOCK ---------- */
  
   .right {
-    flex: 1;
+    flex: 1 1 50%;
     display: flex;
     justify-content: center;
     align-items: flex-end;   /* ⬅️ moves image upward */
@@ -112,7 +113,8 @@ body {
   }
   
   .right img {
-    width: 190%;              /* ⬅️ make the image bigger */
+    max-width: 120%;
+    height: auto;              /* ⬅️ make the image bigger */
     object-fit: contain;
   }
   
@@ -120,4 +122,5 @@ body {
     margin-top: 1.5rem;     /* adjust how far down it moves */
     white-space: nowrap;    /* ⬅️ forces text to stay on one line */
   }
+  
   
