@@ -22,6 +22,14 @@ draggable_options = {
     5: ['f7.1 1/30s ISO1250', 'f4.8 1/15s ISO1600', 'f5.6 1/2000s ISO800']
 }
 
+quiz_questions = {
+    1: "Drag and drop the correct exposure value below each photo",
+    2: "Drag and drop the correct ISO used in each photo",
+    3: "Adjust the aperture slider so that only the desired object appears sharp and in focus",
+    4: "Judge if the given shutter speed matches with the scenario",
+    5: "Match the photos with the correct settings"
+}
+
 @app.route("/")
 def home():
     return render_template("homepage.html")
@@ -144,7 +152,8 @@ def quiz_view(question_id):
                            draggable_values=draggable_values,
                            image_files=image_files,
                            question_id=question_id,
-                           progress_percent=percent)
+                           progress_percent=percent,
+                           quiz_questions=quiz_questions)
 
 
 @app.route("/quiz/<int:question_id>/answer", methods=["POST"])
@@ -188,7 +197,8 @@ def quiz_feedback(question_id):
         correctness=correctness,
         is_correct=is_correct,
         progress_percent=percent,
-        image_files=image_files
+        image_files=image_files,
+        quiz_questions=quiz_questions
     )
 
 

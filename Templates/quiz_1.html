@@ -1,7 +1,8 @@
 {% extends "quiz.html" %}
 <!-- DEBUG: this is quiz_1.html -->
 
-{% block title %}Quiz 1: Drag and drop the correct exposure value below each photo{% endblock %}
+{% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
+
 
 {% block question_body %}
   <!-- Image row -->

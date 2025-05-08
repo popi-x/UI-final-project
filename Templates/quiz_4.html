@@ -1,7 +1,7 @@
 {% extends "quiz.html" %}
 <!-- DEBUG: this is quiz_4.html -->
 
-{% block title %}Quiz 4: Judge if the given shutter speed matches with the scenario.{% endblock %}
+{% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
 
 {% block question_body %}
   <!-- Image row -->

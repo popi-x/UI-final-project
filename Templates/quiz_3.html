@@ -1,9 +1,7 @@
 {% extends "quiz.html" %}
 <!-- DEBUG: this is quiz_3.html -->
 
-{% block title %}
-  Quiz 3: Adjust the aperture slider so that only the desired object appears sharp and in focus.
-{% endblock %}
+{% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
 
 {% block question_body %}
 <div id="quiz-container"
@@ -11,13 +9,15 @@
      data-question-id="{{ question_id }}"
      data-aperture-values="{{ draggable_values | default([]) | tojson | safe }}">
 
-
-  <!-- Image Row -->
-  <div class="row text-center mb-4">
-    <div class="col">
-      <img src="{{ url_for('static', filename='images/' ~ image_files[0]) }}"
-           class="w-50 quiz-3-image" alt="aperture quiz image">
-    </div>
+  <!-- Image row -->
+  <div class="row text-center mb-3">
+      <div class="col">
+        {% if image_files %}
+          <img src="{{ url_for('static', filename='images/' ~ image_files[0]) }}" class="w-50 quiz-3-image" alt="{{ image_files[0] }}">
+        {% else %}
+          <p><em>No image available</em></p>
+        {% endif %}
+      </div>
   </div>
 
   <!-- Slider -->

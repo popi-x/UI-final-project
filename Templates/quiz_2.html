@@ -1,7 +1,7 @@
 {% extends "quiz.html" %}
 <!-- DEBUG: this is quiz_2.html -->
 
-{% block title %}Quiz 2: Drag and drop the correct ISO used in each photo{% endblock %}
+{% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
 
 {% block question_body %}
   <!-- Image row -->
