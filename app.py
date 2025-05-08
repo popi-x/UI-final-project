@@ -8,10 +8,16 @@ CORS(app)
 
 # Correct answers for each quiz question
 correct_answers = {
+    1: ['-4', '0', '+3', '+2', '-1', '-3'],
+    2: ['12800', '800', '1600', '6400'],
+    3: ['f1.4'],  # Example — you can add complexity later
+    4: ['False', 'False', 'True'],
+    5: ['f4.8 1/15s ISO1600', 'f7.1 1/30s ISO1250', 'f5.6 1/2000s ISO800']
+}
+
+draggable_options = {
     1: ['-4', '-3', '-1', '0', '+2', '+3'],
     2: ['800', '1600', '6400', '12800'],
-    3: ['f/1.4'],  # Example — you can add complexity later
-    4: ['1/1000s', '1/500s'],
     5: ['f7.1 1/30s ISO1250', 'f4.8 1/15s ISO1600', 'f5.6 1/2000s ISO800']
 }
 
@@ -118,7 +124,7 @@ def shutter_speed(step):
 
 @app.route("/quiz/<int:question_id>")
 def quiz_view(question_id):
-    draggable_values = correct_answers.get(question_id, [])
+    draggable_values = draggable_options.get(question_id, [])
     template_name = f"quiz_{question_id}.html"
     percent = int((question_id / len(correct_answers)) * 100)
 
