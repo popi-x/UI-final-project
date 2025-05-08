@@ -19,9 +19,10 @@ $(document).ready(function () {
     let userAnswers = {};
     let isComplete = true;
   
-    document.querySelectorAll('.dropzone').forEach((el, i) => {
-      const val = el.dataset.value || null;
-      userAnswers[`slot_${i}`] = val;
+    document.querySelectorAll('[data-slot]').forEach((el) => {
+      const slot = el.dataset.slot;
+      const val = el.dataset.value || null; // get container's data-value
+      userAnswers[slot] = val;
   
       if (!val) {
         isComplete = false;
@@ -29,8 +30,8 @@ $(document).ready(function () {
     });
   
     if (!isComplete) {
-      alert("Please complete all the dropzones before submitting!");
-      return; // Do not submit with null answers
+      alert("Please complete all parts of the question before submitting!");
+      return;
     }
   
 
