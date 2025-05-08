@@ -16,10 +16,13 @@
     </div>
   </div>
 
-  <h2 id="quiz-question" class="mb-3">{% block title %}Quiz {{ question_id }}{% endblock %}</h2>
-  {% block question_body %}
-  <!-- To be filled in by specific quiz templates -->
-  {% endblock %}
+  <div class="mb-4">
+    <h2 id="quiz-question" class="mb-3">{% block title %}Quiz {{ question_id }}{% endblock %}</h2>
+    {% block question_body %}
+    <!-- To be filled in by specific quiz templates -->
+    {% endblock %}
+  </div>
+  
 
   <div id="submit-btn-wrapper">
     <button id="submit-btn">submit</button>

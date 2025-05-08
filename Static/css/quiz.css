@@ -146,3 +146,7 @@
   transition: all 0.2s ease;
 }
 
+#mcq-scenario{
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+}

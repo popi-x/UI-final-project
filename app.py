@@ -14,7 +14,7 @@ correct_answers = {
     4: ['f1.4'],  # Example — you can add complexity later
     5: ['False', 'False', 'True'],
     6: ['False', 'True', 'True', 'False', 'False'],
-    7: ['Shutter Speed', 'Aperture'],
+    7: ['unselected', 'Shutter Speed', 'Aperture'],
     8: ['High', 'Medium', 'Medium'],
     9: ['f4.8 1/15s ISO1600', 'f7.1 1/30s ISO1250', 'f5.6 1/2000s ISO800']
 }
