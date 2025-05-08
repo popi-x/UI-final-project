@@ -1,0 +1,129 @@
+/* ---------- BASE STYLES ---------- */
+body {
+    background: linear-gradient(90deg, #FFFFFF, #F3F3F7);
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  /* ---------- NAVBAR ---------- */
+  .custom-navbar .navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Merriweather', serif;
+  }
+  
+  .custom-navbar .nav-link {
+    color: #525B76;
+    opacity: 0.8;
+    position: relative;
+    font-weight: normal;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  
+  .custom-navbar .nav-link.active {
+    background-color: #FFA770;
+    color: black;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 0.4rem 1rem;
+    opacity: 1;
+  }
+  
+  .custom-navbar .nav-link:hover {
+    opacity: 1;
+  }
+  
+  .custom-navbar .nav-link:not(.active):hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: #419FB4;
+    transition: width 0.3s ease;
+  }
+  
+  
+  /* ---------- HOMEPAGE HORIZONTAL LAYOUT ---------- */
+
+  .homepage-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    height: calc(100vh - 330px);  /* ⬅️ was too tall before */
+    margin: 0 auto;
+    padding: 1rem 2rem;           /* ⬅️ tighter top/bottom padding */
+  }
+  
+  
+  /* ---------- LEFT TEXT BLOCK ---------- */
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.2rem;
+    padding-left: 3rem;
+  }
+  
+  .title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 4.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    font-weight: normal;
+    color: #525B76;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-family: 'Merriweather', serif;
+  }
+  
+  .btn-learn {
+    background-color: #419FB4;
+    color: white;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    padding: 1rem 4rem;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+  }
+  
+  
+  /* ---------- RIGHT IMAGE BLOCK ---------- */
+ 
+
+  .right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;  /* Align image leftward */
+    align-items: center;
+    padding: 0;
+  }
+
+  .right img {
+    width: 950px;
+    max-width: none;
+    margin-left: -520px;
+    margin-top: -90px;   /* ⬅️ This moves it up */
+    object-fit: contain;
+  }
+  
+  
+  
+  .move-down {
+    margin-top: 1.5rem;     /* adjust how far down it moves */
+    white-space: nowrap;    /* ⬅️ forces text to stay on one line */
+  }
+  
