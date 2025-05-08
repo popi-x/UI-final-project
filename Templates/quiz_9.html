@@ -1,23 +1,22 @@
 {% extends "quiz.html" %}
-<!-- DEBUG: this is quiz_1.html -->
+<!-- DEBUG: this is quiz_5.html -->
 
 {% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
-
 
 {% block question_body %}
   <!-- Image row -->
   <div class="row text-center mb-3">
     {% for filename in image_files %}
       <div class="col">
-        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid" alt="quiz image">
+        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid quiz-image" alt="{{ filename }}">
       </div>
     {% endfor %}
-
   </div>
+
 
   <!-- Dropzone row -->
   <div class="row text-center mb-3">
-    {% for i in range(6) %}
+    {% for i in range(3) %}
       <div class="col">
         <div class="dropzone" id="dropzone-{{ i }}" data-slot="slot_{{ i }}"></div>
       </div>
@@ -33,7 +32,7 @@
     {% endfor %}
   </div>
 
-  <!-- drag-drop interaction for quiz 1 -->
+  <!-- drag-drop interaction for quiz 5 -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>

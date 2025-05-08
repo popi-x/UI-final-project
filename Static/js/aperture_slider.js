@@ -1,7 +1,7 @@
 console.log("✅ aperture_slider.js loaded");
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.questionId !== 3) return;
+  if (window.questionId !== 4) return;
 
   const apertureValues = window.apertureValues || [];
   console.log("📸 Aperture values:", apertureValues);

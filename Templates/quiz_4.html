@@ -1,71 +1,51 @@
 {% extends "quiz.html" %}
-<!-- DEBUG: this is quiz_4.html -->
+<!-- DEBUG: this is quiz_3.html -->
 
 {% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
 
 {% block question_body %}
+<div id="quiz-container"
+     class="container mt-4"
+     data-question-id="{{ question_id }}"
+     data-aperture-values="{{ draggable_values | default([]) | tojson | safe }}">
+
   <!-- Image row -->
   <div class="row text-center mb-3">
-    {% for filename in image_files %}
       <div class="col">
-        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid quiz-image" alt="{{ filename }}">
+        {% if image_files %}
+          <img src="{{ url_for('static', filename='images/' ~ image_files[0]) }}" class="w-50 quiz-image" alt="{{ image_files[0] }}">
+        {% else %}
+          <p><em>No image available</em></p>
+        {% endif %}
       </div>
-    {% endfor %}
   </div>
 
-  <div class="row text-center mb-3">
-    <!-- Question 1 -->
+  <!-- Slider -->
+  <div class="row text-center mb-4">
     <div class="col">
-      <p>1/10s</p>
-      <div class="btn-group btn-group-toggle mb-3" data-slot="slot_0">
-        <label class="btn btn-outline-success">
-          <input type="radio" name="tf_q1" value="True" autocomplete="off"> True
-        </label>
-        <label class="btn btn-outline-danger">
-          <input type="radio" name="tf_q1" value="False" autocomplete="off"> False
-        </label>
-      </div>
-    </div>
-
-    <!-- Question 2 -->
-    <div class="col">
-      <p>1/1000s</p>
-      <div class="btn-group btn-group-toggle mb-3" data-slot="slot_1">
-        <label class="btn btn-outline-success">
-          <input type="radio" name="tf_q2" value="True" autocomplete="off"> True
-        </label>
-        <label class="btn btn-outline-danger">
-          <input type="radio" name="tf_q2" value="False" autocomplete="off"> False
-        </label>
-      </div>
-    </div>
-
-    <!-- Question 3 -->
-    <div class="col">
-      <p>1/500s</p>
-      <div class="btn-group btn-group-toggle mb-3" data-slot="slot_2">
-        <label class="btn btn-outline-success">
-          <input type="radio" name="tf_q3" value="True" autocomplete="off"> True
-        </label>
-        <label class="btn btn-outline-danger">
-          <input type="radio" name="tf_q3" value="False" autocomplete="off"> False
-        </label>
+      <label for="aperture-slider" class="form-label fw-bold">Select Aperture</label>
+      <input
+        type="range"
+        class="form-range w-75"
+        min="0"
+        max="{{ draggable_values|length - 1 }}"
+        value="0"
+        step="1"
+        id="aperture-slider"
+      >
+      <div class="mt-2">
+        <span class="fw-bold" id="aperture-value">Loading...</span>
       </div>
     </div>
   </div>
-<!--True or false-->
-<!--<div>[Icons]</div>
-  <div class="row text-center mb-3">
-    {% for i in range(3) %}
-      <div class="col">
-        True or False
-      </div>
-    {% endfor %}
-  </div>-->
-
-  <!-- True ot False interaction for quiz 4 -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-  <script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/true_false.js') }}"></script>
+</div>
 {% endblock %}
+
+{% block scripts %}
+  <script>
+    window.apertureValues = {{ draggable_values | tojson | safe }};
+    window.questionId = {{ question_id }};
+  </script>
+  <script defer src="{{ url_for('static', filename='js/aperture_slider.js') }}"></script>
+{% endblock %}
+

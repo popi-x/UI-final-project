@@ -1,0 +1,48 @@
+{% extends "quiz.html" %}
+<!-- DEBUG: this is quiz_6.html -->
+
+{% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
+
+{% block question_body %}
+<div id="quiz-container"
+     class="container mt-4"
+     data-question-id="{{ question_id }}">
+
+  <div class="row mb-4">
+    {% set questions = [
+      "If I increase ISO, the aperture will decrease automatically",
+      "If I can adjust either ISO or shutter speed to increase the EV (both are unrelated to the features you want to capture), I should first adjust the shutter speed",
+      "Increasing the aperture (wider) results in a shallow depth of field",
+      "ISO will not affect the quality of the image",
+      "If I decrease shutter speed (slower) and the aperture remains unchanged, I may need to increase the ISO"
+    ] %}
+
+    {% for question in questions %}
+    <div class="col-12 mb-3">
+      <div class="border p-3 rounded bg-light">
+        <div class="row align-items-center">
+          <div class="col-md-9">
+            <p class="mb-0"><strong>{{ loop.index }}.</strong> {{ question }}</p>
+          </div>
+          <div class="col-md-3 text-end btn-group" data-slot="slot_{{ loop.index0 }}">
+            <label class="btn btn-outline-dark">
+              <input type="radio" name="q{{ loop.index }}" value="True"> True
+            </label>
+            <label class="btn btn-outline-dark">
+              <input type="radio" name="q{{ loop.index }}" value="False"> False
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>
+<script src="{{ url_for('static', filename='js/true_false.js') }}"></script>
+{% endblock %}

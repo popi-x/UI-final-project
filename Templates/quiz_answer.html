@@ -31,7 +31,63 @@
     {% endfor %}
   </div>
 
+  {% if question_id == 1 %}
+  <!-- Definitions (for Quiz 1 only) -->
+  <div class="row mb-4 text-center">
+    {% for definition in [
+      "How bright or dark the photo looks",
+      "The amount of time the shutter is open, letting light in",
+      "How sensitive the camera is to light",
+      "The size of the lens opening controlling light and depth of field"
+    ] %}
+      <div class="col-md-3 mb-4">
+        <div class="p-3 border rounded bg-light h-100 d-flex align-items-center justify-content-center text-center definition-box">
+          <strong class="text-wrap">{{ definition }}</strong>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if question_id == 6 %}
+  {% set questions = [
+    "If I increase ISO, the aperture will decrease automatically",
+    "If I can adjust either ISO or shutter speed to increase the EV (both are unrelated to the features you want to capture), I should first adjust the shutter speed",
+    "Increasing the aperture (wider) results in a shallow depth of field",
+    "ISO will not affect the quality of the image",
+    "If I decrease shutter speed (slower) and the aperture remains unchanged, I may need to increase the ISO"
+  ] %}
+
+  <div class="row mb-4">
+    {% for question in questions %}
+      {% set user = user_answers[loop.index0] %}
+      {% set correct = correct_answers[loop.index0] %}
+      {% set is_correct = (user == correct) %}
+      <div class="col-12 mb-3">
+        <div class="border p-3 rounded bg-light">
+          <div class="row align-items-center">
+            <div class="col-md-9">
+              <p class="mb-1"><strong>{{ loop.index }}.</strong> {{ question }}</p>
+            </div>
+            <div class="col-md-3 text-end btn-group">
+              <label class="btn btn-outline-dark {% if user == 'True' %}active{% endif %}">
+                <input type="radio" disabled {{ 'checked' if user == 'True' }}> True
+              </label>
+              <label class="btn btn-outline-dark {% if user == 'False' %}active{% endif %}">
+                <input type="radio" disabled {{ 'checked' if user == 'False' }}> False
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+
   <!-- User Answer row -->
+  {% if question_id != 6 %}
   <div class="row text-center mb-3">
     {% for i in range(user_answers | length) %}
       <div class="col">
@@ -39,8 +95,12 @@
       </div>
     {% endfor %}
   </div>
+  {% endif %}
+  
+
 
   {% block feedback_body %}
+  {% if question_id != 6 %}
   <!-- Correct Answer row -->
   <div id="correct-answers" class="row text-center mb-4 d-none">
     {% for correct_value in correct_answers %}
@@ -49,6 +109,8 @@
       </div>
     {% endfor %}
   </div>
+  {% endif %}
+
   <!-- Feedback -->
   <p class="fs-5 fw-bold text-center">
     {{ '✅ Correct!' if is_correct else '❌ Try again next time!' }}

@@ -1,51 +1,39 @@
 {% extends "quiz.html" %}
-<!-- DEBUG: this is quiz_3.html -->
+<!-- DEBUG: this is quiz_2.html -->
 
 {% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
 
 {% block question_body %}
-<div id="quiz-container"
-     class="container mt-4"
-     data-question-id="{{ question_id }}"
-     data-aperture-values="{{ draggable_values | default([]) | tojson | safe }}">
-
   <!-- Image row -->
   <div class="row text-center mb-3">
+    {% for filename in image_files %}
       <div class="col">
-        {% if image_files %}
-          <img src="{{ url_for('static', filename='images/' ~ image_files[0]) }}" class="w-50 quiz-image" alt="{{ image_files[0] }}">
-        {% else %}
-          <p><em>No image available</em></p>
-        {% endif %}
+        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid" alt="{{ filename }}">
       </div>
+    {% endfor %}
   </div>
 
-  <!-- Slider -->
-  <div class="row text-center mb-4">
-    <div class="col">
-      <label for="aperture-slider" class="form-label fw-bold">Select Aperture</label>
-      <input
-        type="range"
-        class="form-range w-75"
-        min="0"
-        max="{{ draggable_values|length - 1 }}"
-        value="0"
-        step="1"
-        id="aperture-slider"
-      >
-      <div class="mt-2">
-        <span class="fw-bold" id="aperture-value">Loading...</span>
+  <!-- Dropzone row -->
+  <div class="row text-center mb-3">
+    {% for i in range(4) %}
+      <div class="col">
+        <div class="dropzone" id="dropzone-{{ i }}" data-slot="slot_{{ i }}"></div>
       </div>
-    </div>
+    {% endfor %}
   </div>
-</div>
-{% endblock %}
 
-{% block scripts %}
-  <script>
-    window.apertureValues = {{ draggable_values | tojson | safe }};
-    window.questionId = {{ question_id }};
-  </script>
-  <script defer src="{{ url_for('static', filename='js/aperture_slider.js') }}"></script>
-{% endblock %}
+  <!-- Draggable values row -->
+  <div class="row text-center">
+    {% for value in draggable_values %}
+      <div class="col">
+        <div class="draggable" data-value="{{ value }}">{{ value }}</div>
+      </div>
+    {% endfor %}
+  </div>
 
+  <!-- drag-drop interaction for quiz 2 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/drag_drop.js') }}"></script>
+{% endblock %}

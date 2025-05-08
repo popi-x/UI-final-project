@@ -15,7 +15,7 @@ $(document).ready(function () {
   function submitQuiz(questionId) {
     let userAnswers = {};
 
-    if (questionId === 3) {
+    if (questionId === 4) {
       const slider = document.getElementById("aperture-slider");
       const idx = parseInt(slider.value);
       const value = window.apertureValues[idx];

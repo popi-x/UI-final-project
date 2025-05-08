@@ -75,3 +75,10 @@
   font-weight: 600;*/
   padding-top: 4rem;
 }
+
+.definition-box {
+  min-height: 120px;
+  font-size: 0.95rem;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 4px rgba(0,0,0,0.05);
+}
