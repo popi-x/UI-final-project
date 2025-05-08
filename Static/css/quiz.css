@@ -15,8 +15,8 @@
 }
   */
 
-.dropzone {
-    width: 60px;
+  .dropzone {
+    width: 100%;
     height: 40px;
     border: 2px dashed black;  
     background-color: #f1f5f9;    
@@ -25,6 +25,7 @@
     font-weight: bold;
     border-radius: 6px;
   }
+  
 
 .draggable {
   width: auto;
