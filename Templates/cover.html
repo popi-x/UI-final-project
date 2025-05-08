@@ -7,12 +7,16 @@
     <div class="col-1 left-rec-container">
         <div class="left-rec"></div>
     </div>
-    <p class="col-2 title align-self-start">{{ data[section].title }}</p>
-    <div class="col-8 right">
-        <p class="row subtitle align-items-start"> {{ data[section].subtitle }}</p>
-        <br><br>
-        <div class="row cover-img-container">
-            <img src= "{{ url_for('static', filename=data[section].img) }}"  alt="{{data[section].title}} cover image" class="cover-img" >
+    <p class="col-2 title align-self-start justify-content-center">{{ data[section].title }}</p>
+    <div class="col-9 right">
+        <div class="row justify-content-center">
+            <p class="col-10 subtitle align-self-center"> {{ data[section].subtitle }}</p>
+        </div>
+        <br>
+        <div class="row cover-img-container justify-content-center">
+            <div class="col-10">
+                <img src= "{{ url_for('static', filename=data[section].img) }}"  alt="{{data[section].title}} cover image" class="cover-img" >
+            </div>
         </div>
         <div class="row next-btn-container justify-content-end">
             <a href="/learn/{{ section }}/1" class="btn btn-light d-flex align-items-center justify-content-center">Next</a>
