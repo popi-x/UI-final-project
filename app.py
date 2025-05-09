@@ -15,8 +15,8 @@ correct_answers = {
     5: ['False', 'False', 'True'],
     6: ['False', 'True', 'True', 'False', 'False'],
     7: ['Shutter Speed', 'Aperture'],
-    8: ['High', 'Medium', 'Medium'],
-    9: ['f4.8 1/15s ISO1600', 'f7.1 1/30s ISO1250', 'f5.6 1/2000s ISO800']
+    # 8: ['High', 'Medium', 'Medium'],
+    8: ['f4.8 1/15s ISO1600', 'f7.1 1/30s ISO1250', 'f5.6 1/2000s ISO800']
 }
 
 draggable_options = {
@@ -24,7 +24,7 @@ draggable_options = {
     2: ['-4', '-3', '-1', '0', '+2', '+3'],
     3: ['800', '1600', '6400', '12800'],
     4: ['f0.95', 'f1.4', 'f2.0', 'f2.8', 'f4', 'f5.6', 'f8', 'f11', 'f14', 'f16'],
-    9: ['f7.1 1/30s ISO1250', 'f4.8 1/15s ISO1600', 'f5.6 1/2000s ISO800']
+    8: ['f7.1 1/30s ISO1250', 'f4.8 1/15s ISO1600', 'f5.6 1/2000s ISO800']
 }
 
 quiz_questions = {
@@ -35,8 +35,8 @@ quiz_questions = {
     5: "Judge if the given shutter speed matches with the scenario",
     6: "Determine if the following statements are true or false",
     7: "Choose the parameter(s) that you need to adjust first in the given scenario",
-    8: "Choose the parameter(s) that you need to adjust first in the given scenario",
-    9: "Match the photos with the correct settings"
+    # 8: "Choose the parameter(s) that you need to adjust first in the given scenario",
+    8: "Match the photos with the correct settings"
 }
 
 @app.route("/")
@@ -152,7 +152,7 @@ def quiz_view(question_id):
         3: ["quiz3_img1.png", "quiz3_img2.png", "quiz3_img3.png", "quiz3_img4.png"],
         4: ["quiz4_img1.png"],
         5: ["quiz5_img1.png", "quiz5_img2.png", "quiz5_img3.png"],
-        9: ["quiz9_img1.png", "quiz9_img2.png", "quiz9_img3.png"]
+        8: ["quiz9_img1.png", "quiz9_img2.png", "quiz9_img3.png"]
     }
 
     image_files = image_sets.get(question_id, [])
@@ -193,7 +193,7 @@ def quiz_feedback(question_id):
         3: ["quiz3_img1.png", "quiz3_img2.png", "quiz3_img3.png", "quiz3_img4.png"],
         4: ["quiz4_img1.png"],
         5: ["quiz5_img1.png", "quiz5_img2.png", "quiz5_img3.png"],
-        9: ["quiz9_img1.png", "quiz9_img2.png", "quiz9_img3.png"]
+        8: ["quiz9_img1.png", "quiz9_img2.png", "quiz9_img3.png"]
     }
 
     image_files = image_sets.get(question_id, [])
