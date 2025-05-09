@@ -46,7 +46,7 @@ def triangle_redirect():
 
 @app.route("/learn/exposure_triangle/<int:step_id>", methods=["GET", "POST"], endpoint="exposure_triangle")
 def triangle(step_id):
-    with open("data/exposure_triangle.json") as f:
+    with open("data/exposure_triangle.json", encoding="utf8") as f:
         content = json.load(f)
 
     total_steps = len(content)

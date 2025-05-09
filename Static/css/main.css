@@ -82,7 +82,7 @@ body {
   background-color: #419FB4;
   width: 8vw;
   height: 8vh;
-  font-size: clamp(0.5rem, 3vw, 1.5rem);
+  font-size: clamp(0.5rem, 4vw, 2rem);
   color:white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
  }
@@ -241,14 +241,41 @@ span{
 /* ---------- next link button ---------- */
 .next-btn-container .btn{
   background-color: #419FB4;
-  width: 7vw;
-  height: 5.5vh;
+  width: 6vw;
+  height: 5vh;
   font-size: clamp(0.5rem, 1.3vw, 1.5rem);
   color:white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
   font-family: 'merriweather', serif;
 }
 
+/* ---------- contents buttons ---------- */
+.back-btn .btn{
+  background-color: #FFA770;
+  width: 6vw;
+  height: 5vh;
+  font-size: clamp(0.5rem, 1.3vw, 1.5rem);
+  color:white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  font-family: 'merriweather', serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.next-btn .btn{
+  background-color: #419FB4;
+  width: 6vw;
+  height: 5vh;
+  font-size: clamp(0.5rem, 1.3vw, 1.5rem);
+  color:white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  font-family: 'merriweather', serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 
