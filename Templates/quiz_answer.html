@@ -18,12 +18,113 @@
       {{ progress_percent }}%
     </div>
   </div>
+
+  <!--Quiz Question Row-->
+  <h2 id="quiz-question" class="mb-3">{% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}</h2>
   
-  {% block question_body %}
-    {% include "partials/quiz_" ~ question_id ~ "_body.html" %}
-  {% endblock %}
+  <!-- Image Row -->
+  <div class="row text-center mb-3">
+    {% for filename in image_files %}
+      <div class="col">
+        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid quiz-image" alt="quiz image">
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if question_id == 1 %}
+  <!-- Definitions (for Quiz 1 only) -->
+  <div class="row mb-4 text-center">
+    {% for definition in [
+      "How bright or dark the photo looks",
+      "The amount of time the shutter is open, letting light in",
+      "How sensitive the camera is to light",
+      "The size of the lens opening controlling light and depth of field"
+    ] %}
+      <div class="col-md-3 mb-4">
+        <div class="p-3 border rounded bg-light h-100 d-flex align-items-center justify-content-center text-center definition-box">
+          <strong class="text-wrap">{{ definition }}</strong>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if question_id == 6 %}
+{% set questions = [
+  "If I increase ISO, the aperture will decrease automatically",
+  "If I can adjust either ISO or shutter speed to increase the EV (both are unrelated to the features you want to capture), I should first adjust the shutter speed",
+  "Increasing the aperture (wider) results in a shallow depth of field",
+  "ISO will not affect the quality of the image",
+  "If I decrease shutter speed (slower) and the aperture remains unchanged, I may need to increase the ISO"
+] %}
+
+<div class="row mb-4">
+  {% for question in questions %}
+    {% set user = user_answers[loop.index0] %}
+    {% set correct = correct_answers[loop.index0] %}
+    {% set is_correct = (user == correct) %}
+    <div class="col-12 mb-3">
+      <div class="border p-3 rounded bg-light">
+        <div class="row align-items-center">
+          <div class="col-md-9">
+            <p class="mb-0"><strong>{{ loop.index }}.</strong> {{ question }}</p>
+          </div>
+          <div class="col-md-3 text-end" data-slot="slot_{{ loop.index0 }}">
+            <div class="btn-group w-100" role="group">
+              <label class="btn btn-outline-dark w-50 {% if user == 'True' %}active{% endif %}">
+                <input type="radio" disabled {{ 'checked' if user == 'True' }}> True
+              </label>
+              <label class="btn btn-outline-dark w-50 {% if user == 'False' %}active{% endif %}">
+                <input type="radio" disabled {{ 'checked' if user == 'False' }}> False
+              </label>
+            </div>
+          
+            <!-- Show below, not inside .btn-group -->
+            <div class="correct-answer-line d-none mt-2 text-end">
+              <small><strong>Correct Answer:</strong> {{ correct }}</small>
+            </div>
+          </div>
+          
+                   
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const qid = parseInt(document.getElementById("quiz-container").dataset.questionId);
+    if (qid === 6) {
+      const btn = document.getElementById("show-answer-btn");
+      if (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll(".correct-answer-line").forEach(el => {
+            el.classList.remove("d-none");
+          });
+        });
+      }
+    }
+  });
+</script>
+{% endif %}
+
+
+  <!-- User Answer row -->
+  {% if question_id != 6 %}
+  <div class="row text-center mb-3">
+    {% for i in range(user_answers | length) %}
+      <div class="col">
+        <div class="dropzone" id="dropzone-{{ i }}">{{ user_answers[i] }}</div>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+
 
   {% block feedback_body %}
+  {% if question_id != 6 %}
   <!-- Correct Answer row -->
   <div id="correct-answers" class="row text-center mb-4 d-none">
     {% for correct_value in correct_answers %}
@@ -32,13 +133,15 @@
       </div>
     {% endfor %}
   </div>
+  {% endif %}
+
   <!-- Feedback -->
-  <p class="fs-5 fw-bold text-center">
+  <p id="answer-feedback-wrapper" class="fs-5 fw-bold text-center">
     {{ '✅ Correct!' if is_correct else '❌ Try again next time!' }}
   </p>
 
   <!-- Show Answer / Next -->
-  <div class="text-center mb-3">
+  <div id="answer-btn-wrapper">
     <button id="show-answer-btn" class="btn btn-outline-primary">Show Answer</button>
     <button id="next-btn" class="btn btn-success">Next</button>
   </div>

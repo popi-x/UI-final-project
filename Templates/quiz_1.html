@@ -1,39 +1,53 @@
 {% extends "quiz.html" %}
 <!-- DEBUG: this is quiz_1.html -->
 
-{% block title %}Quiz 1: Drag and drop the correct exposure value below each photo{% endblock %}
+{% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
 
 {% block question_body %}
-  <!-- Image row -->
-  <div class="row text-center mb-3">
-    {% for i in range(6) %}
-      <div class="col">
-        <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" class="img-fluid" alt="photo {{ i+1 }}">
+<div id="quiz-container"
+     class="container mt-4"
+     data-question-id="{{ question_id }}"
+     data-draggable-values="{{ draggable_values | tojson | safe }}">
+
+
+  <!-- Definitions-->
+  <div class="row mb-4 text-center">
+    {% for definition in [
+      "How bright or dark the photo looks",
+      "The amount of time the shutter is open, letting light in",
+      "How sensitive the camera is to light",
+      "The size of the lens opening controlling light and depth of field"
+    ] %}
+      <div class="col-md-3 mb-4">
+        <div class="p-3 border rounded bg-light h-100 d-flex align-items-center justify-content-center text-center definition-box">
+          <strong class="text-wrap">{{ definition }}</strong>
+        </div>
       </div>
     {% endfor %}
   </div>
-
+  
   <!-- Dropzone row -->
   <div class="row text-center mb-3">
-    {% for i in range(6) %}
+    {% for i in range(4) %}
       <div class="col">
-        <div class="dropzone" id="dropzone-{{ i }}"></div>
+        <div class="dropzone" id="dropzone-{{ i }}" data-slot="slot_{{ i }}"></div>
       </div>
     {% endfor %}
   </div>
 
-  <!-- Draggable values row -->
-  <div class="row text-center">
+  <!-- Terms (draggables) -->
+  <div class="row text-center mb-4">
     {% for value in draggable_values %}
-      <div class="col">
+      <div class="col-md-3 mb-2">
         <div class="draggable" data-value="{{ value }}">{{ value }}</div>
       </div>
     {% endfor %}
   </div>
 
-  <!-- drag-drop interaction for quiz 1 -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-  <script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/drag_drop.js') }}"></script>
+
+<!-- Required scripts for drag-drop -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>
+<script src="{{ url_for('static', filename='js/drag_drop.js') }}"></script>
 {% endblock %}

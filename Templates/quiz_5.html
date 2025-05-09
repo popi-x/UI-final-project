@@ -1,39 +1,71 @@
 {% extends "quiz.html" %}
 <!-- DEBUG: this is quiz_5.html -->
 
-{% block title %}Quiz 5: Match the photos with the correct settings.{% endblock %}
+{% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
 
 {% block question_body %}
   <!-- Image row -->
   <div class="row text-center mb-3">
-    {% for i in range(3) %}
+    {% for filename in image_files %}
       <div class="col">
-        <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" class="img-fluid" alt="photo {{ i+1 }}">
+        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid quiz-image" alt="{{ filename }}">
       </div>
     {% endfor %}
   </div>
 
-  <!-- Dropzone row -->
+  <div class="row text-center mb-3">
+    <!-- Question 1 -->
+    <div class="col">
+      <p>1/10s</p>
+      <div class="btn-group btn-group-toggle mb-3" data-slot="slot_0">
+        <label class="btn btn-outline-success">
+          <input type="radio" name="tf_q1" value="True" autocomplete="off"> True
+        </label>
+        <label class="btn btn-outline-danger">
+          <input type="radio" name="tf_q1" value="False" autocomplete="off"> False
+        </label>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="col">
+      <p>1/1000s</p>
+      <div class="btn-group btn-group-toggle mb-3" data-slot="slot_1">
+        <label class="btn btn-outline-success">
+          <input type="radio" name="tf_q2" value="True" autocomplete="off"> True
+        </label>
+        <label class="btn btn-outline-danger">
+          <input type="radio" name="tf_q2" value="False" autocomplete="off"> False
+        </label>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="col">
+      <p>1/500s</p>
+      <div class="btn-group btn-group-toggle mb-3" data-slot="slot_2">
+        <label class="btn btn-outline-success">
+          <input type="radio" name="tf_q3" value="True" autocomplete="off"> True
+        </label>
+        <label class="btn btn-outline-danger">
+          <input type="radio" name="tf_q3" value="False" autocomplete="off"> False
+        </label>
+      </div>
+    </div>
+  </div>
+<!--True or false-->
+<!--<div>[Icons]</div>
   <div class="row text-center mb-3">
     {% for i in range(3) %}
       <div class="col">
-        <div class="dropzone" id="dropzone-{{ i }}"></div>
+        True or False
       </div>
     {% endfor %}
-  </div>
+  </div>-->
 
-  <!-- Draggable values row -->
-  <div class="row text-center">
-    {% for value in draggable_values %}
-      <div class="col">
-        <div class="draggable" data-value="{{ value }}">{{ value }}</div>
-      </div>
-    {% endfor %}
-  </div>
-
-  <!-- drag-drop interaction for quiz 5 -->
+  <!-- True ot False interaction for quiz 4 -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/drag_drop.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/true_false.js') }}"></script>
 {% endblock %}

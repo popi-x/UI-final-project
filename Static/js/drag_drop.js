@@ -1,6 +1,7 @@
 $(document).ready(function(){
     console.log("test drag_drop loaded");
 
+
     $(".draggable").draggable({
         revert: "invalid",
         helper: "clone"
@@ -15,7 +16,7 @@ $(document).ready(function(){
           $this.attr("data-value", droppedValue);//stored in HTML
           $this.text(droppedValue);
     
-          ui.draggable.draggable("disable");
+          /*ui.draggable.draggable("disable");*/
           ui.draggable.addClass("used");
         }
       });
@@ -43,3 +44,4 @@ $(document).ready(function(){
       });
       */
 })
+

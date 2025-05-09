@@ -1,24 +1,39 @@
 {% extends "quiz.html" %}
-<!-- DEBUG: this is quiz_3.html -->
+<!-- DEBUG: this is quiz_2.html -->
 
-{% block title %}Quiz 3: Adjust the aperture slider so that only the desired object appears sharp and in focus.{% endblock %}
+{% block title %}Quiz {{ question_id }}: {{ quiz_questions[question_id] }}{% endblock %}
 
 {% block question_body %}
   <!-- Image row -->
   <div class="row text-center mb-3">
+    {% for filename in image_files %}
       <div class="col">
-        <img src="{{ url_for('static', filename='images/placeholder.jpg') }}" class="w-50" alt="placeholder">
+        <img src="{{ url_for('static', filename='images/' ~ filename) }}" class="img-fluid" alt="{{ filename }}">
       </div>
+    {% endfor %}
   </div>
 
+  <!-- Dropzone row -->
   <div class="row text-center mb-3">
-    <div class="col">
-        <p>[Toggle Bar or Slider]</p>
-    </div>
+    {% for i in range(4) %}
+      <div class="col">
+        <div class="dropzone" id="dropzone-{{ i }}" data-slot="slot_{{ i }}"></div>
+      </div>
+    {% endfor %}
   </div>
 
-  <!-- Toggle bar interaction for quiz 3 -->
+  <!-- Draggable values row -->
+  <div class="row text-center">
+    {% for value in draggable_values %}
+      <div class="col">
+        <div class="draggable" data-value="{{ value }}">{{ value }}</div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- drag-drop interaction for quiz 2 -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="{{ url_for('static', filename='js/quiz_core.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/drag_drop.js') }}"></script>
 {% endblock %}

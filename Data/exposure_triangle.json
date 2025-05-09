@@ -22,12 +22,12 @@
       "title": "",
       "text": "If you want to catch the freezing moment of a moving object (e.g. cyclist) in a dark environment, how should you adjust the settings?\n\nCurrent parameters: shutter speed: 1/30s, aperture: f/5.6, ISO: 100, EV: -2. \n\nI should first adjust……",
       "image_caption": "Choose the setting to adjust first.",
-      "choices": ["Shutter speed", "ISO", "Aperture", "I don’t know"]
+      "choices": ["Shutter speed", "ISO", "Aperture", "I don't know"]
     },
     
     {
       "title": "",
-      "text": "It's normal to feel overwhelmed when adjusting all the settings for the first time.\n\nThink about the most important feature you want to capture in the scene, and which parameter can help us achieve that. Apparently, “the freezing moment” is what we care about and we can make <a href=\"/shutter_speed/1\">shutter speed</a> to achieve that.\n\nCurrent parameters:\nshutter speed: 1/500s\naperture: f/5.6\nISO: 100\nEV: -3",
+      "text": "It's normal to feel overwhelmed when adjusting all the settings for the first time.\n\nThink about the most important feature you want to capture in the scene, and which parameter can help us achieve that. Apparently, “the freezing moment” is what we care about and we can make <a href=\"/learn/shutter_speed/1\">shutter speed</a> to achieve that.\n\nCurrent parameters:\nshutter speed: 1/500s\naperture: f/5.6\nISO: 100\nEV: -3",
       "image": "images/exposure_triangle_6.png",
       "choices": ["ISO", "Aperture", "I don’t know"],
       "side_note": "According to the exposure triangle, increasing the shutter speed while keeping other two unchanged will reduce the EV.",

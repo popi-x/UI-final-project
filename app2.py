@@ -14,9 +14,9 @@ correct_answers = {
     4: ['f1.4'],  # Example — you can add complexity later
     5: ['False', 'False', 'True'],
     6: ['False', 'True', 'True', 'False', 'False'],
-    7: ['unselected', 'Shutter Speed', 'Aperture'],
-    # 8: ['High', 'Medium', 'Medium'],
-    8: ['f4.8 1/15s ISO1600', 'f7.1 1/30s ISO1250', 'f5.6 1/2000s ISO800']
+    7: ['Shutter Speed', 'Aperture'],
+    8: ['High', 'Medium', 'Medium'],
+    9: ['f4.8 1/15s ISO1600', 'f7.1 1/30s ISO1250', 'f5.6 1/2000s ISO800']
 }
 
 draggable_options = {
@@ -24,7 +24,7 @@ draggable_options = {
     2: ['-4', '-3', '-1', '0', '+2', '+3'],
     3: ['800', '1600', '6400', '12800'],
     4: ['f0.95', 'f1.4', 'f2.0', 'f2.8', 'f4', 'f5.6', 'f8', 'f11', 'f14', 'f16'],
-    8: ['f7.1 1/30s ISO1250', 'f4.8 1/15s ISO1600', 'f5.6 1/2000s ISO800']
+    9: ['f7.1 1/30s ISO1250', 'f4.8 1/15s ISO1600', 'f5.6 1/2000s ISO800']
 }
 
 quiz_questions = {
@@ -35,8 +35,8 @@ quiz_questions = {
     5: "Judge if the given shutter speed matches with the scenario",
     6: "Determine if the following statements are true or false",
     7: "Choose the parameter(s) that you need to adjust first in the given scenario",
-    # 8: "Choose the parameter(s) that you need to adjust first in the given scenario",
-    8: "Match the photos with the correct settings"
+    8: "Choose the parameter(s) that you need to adjust first in the given scenario",
+    9: "Match the photos with the correct settings"
 }
 
 @app.route("/")
@@ -47,17 +47,17 @@ def home():
 def overview():
     return render_template("overview.html")
 
-@app.route("/learn/<string:section>/cover")
-def exposure(section):
-    with open("data/cover_data.json") as f:
-        data = json.load(f)
-    return render_template("cover.html", section=section, data=data)
-
+@app.route("/learn/exposure/cover")
+def exposure():
+    return render_template("exposure_cover.html")
 
 @app.route("/learn/exposure/1")
 def exposure_1():
     return render_template("exposure_1.html")
 
+@app.route("/learn/iso/cover")
+def iso_cover():
+    return render_template("iso_cover.html")
 
 @app.route("/learn/iso/1")
 def iso_1():
@@ -66,14 +66,10 @@ def iso_1():
 
 @app.route("/triangle")
 def triangle_redirect():
-    return redirect(url_for("exposure_triangle", step_id=1))
+    return redirect(url_for("triangle", step_id=1))
 
-@app.route("/learn/exposure_triangle/<int:step_id>", methods=["GET", "POST"], endpoint="exposure_triangle")
+@app.route("/learn/<int:step_id>", methods=["GET", "POST"])
 def triangle(step_id):
-    with open("data/exposure_triangle.json", encoding="utf8") as f:
-        content = json.load(f)
-
-    total_steps = len(content)
     session["step"] = step_id
     feedback = None
 
@@ -81,48 +77,30 @@ def triangle(step_id):
         action = request.form.get("action")
 
         if action == "next":
-
-            # ---------- Special logic for step 3 ----------
+            # Handle logic for step 3 with feedback
             if step_id == 3:
                 choice = request.form.get("choice1")
-                if choice:
-                    session["choice1"] = choice
-                    if choice != "Shutter Speed":
-                        feedback = "❌ Remember the exposure triangle: once you pick one setting, the other two need to adjust accordingly. Is what you chose the most important setting for this shot? Try again."
-                        return render_template("exposure_triangle.html", step=step_id, total_steps=total_steps, data=content[step_id - 1], feedback=feedback)
-
-            # ---------- Special logic for step 5 ----------
-            if step_id == 4:
-                choice = request.form.get("answer")
-                if choice:
-                    session["choice5"] = choice
-                    if choice != "Shutter speed":
-                        feedback = "❌ Incorrect! Remember: to freeze motion, Shutter Speed is the key. Try again."
-                        return render_template("exposure_triangle.html", step=step_id, total_steps=total_steps, data=content[step_id - 1], feedback=feedback)
-
-            # ---------- Special logic for step 6 ----------
-            if step_id == 5:
-                choice = request.form.get("answer")
-                if choice:
-                    session["choice6"] = choice
-                    if choice != "Aperture":
-                        feedback = "❌ Not quite! After using fast shutter speed, the next thing to adjust to let in more light is Aperture. Try again."
-                        return render_template("exposure_triangle.html", step=step_id, total_steps=total_steps, data=content[step_id - 1], feedback=feedback)
-
-            # ✅ Move to next step
-            return redirect(url_for("exposure_triangle", step_id=min(step_id + 1, total_steps)))
+                session["choice1"] = choice
+                if choice != "Shutter Speed":
+                    feedback = "❌ Remember the exposure triangle: once you pick one setting, the other two need to adjust accordingly. Is what you chose the most important setting for this shot? Try again."
+                    return render_template("triangle_step.html", step=step_id, feedback=feedback)
+            return redirect(url_for("triangle", step_id=step_id + 1))
 
         elif action == "prev":
-            return redirect(url_for("exposure_triangle", step_id=max(step_id - 1, 1)))
+            return redirect(url_for("triangle", step_id=step_id - 1))
 
         elif action == "restart":
             session.clear()
             return redirect(url_for("quiz_view", question_id=1))
 
-    return render_template("exposure_triangle.html", step=step_id, total_steps=total_steps, data=content[step_id - 1], feedback=feedback)
+    return render_template("triangle_step.html", step=step_id)
 
-@app.route("/learn/aperture/<int:step>", methods=["GET", "POST"])
+
+@app.route("/aperture/<int:step>", methods=["GET", "POST"])
 def aperture(step):
+    import json
+    from flask import render_template, request, session, redirect, url_for
+
     with open("data/aperture_data.json") as f:
         content = json.load(f)
 
@@ -141,7 +119,7 @@ def aperture(step):
     data = content[step - 1]
     return render_template("aperture_step.html", step=step, total_steps=len(content), data=data)
 
-@app.route("/learn/shutter_speed/<int:step>", methods=["GET", "POST"])
+@app.route("/shutter_speed/<int:step>", methods=["GET", "POST"])
 def shutter_speed(step):
     with open("data/shutter_speed_data.json") as f:
         content = json.load(f)
@@ -174,7 +152,7 @@ def quiz_view(question_id):
         3: ["quiz3_img1.png", "quiz3_img2.png", "quiz3_img3.png", "quiz3_img4.png"],
         4: ["quiz4_img1.png"],
         5: ["quiz5_img1.png", "quiz5_img2.png", "quiz5_img3.png"],
-        8: ["quiz9_img1.png", "quiz9_img2.png", "quiz9_img3.png"]
+        9: ["quiz9_img1.png", "quiz9_img2.png", "quiz9_img3.png"]
     }
 
     image_files = image_sets.get(question_id, [])
@@ -215,7 +193,7 @@ def quiz_feedback(question_id):
         3: ["quiz3_img1.png", "quiz3_img2.png", "quiz3_img3.png", "quiz3_img4.png"],
         4: ["quiz4_img1.png"],
         5: ["quiz5_img1.png", "quiz5_img2.png", "quiz5_img3.png"],
-        8: ["quiz9_img1.png", "quiz9_img2.png", "quiz9_img3.png"]
+        9: ["quiz9_img1.png", "quiz9_img2.png", "quiz9_img3.png"]
     }
 
     image_files = image_sets.get(question_id, [])
