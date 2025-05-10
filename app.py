@@ -227,6 +227,15 @@ def results():
         total=total_possible
     )
 
+@app.route("/quiz/restart")
+def quiz_restart():
+    # Clear previous quiz answers and scores
+    for key in list(session.keys()):
+        if key.startswith("score_") or key.startswith("user_answers_"):
+            session.pop(key)
+    return redirect(url_for('quiz_view', question_id=1))
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
