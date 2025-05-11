@@ -1,33 +1,45 @@
 {% extends "layout.html" %}
 {% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/aperture.css') }}">
+<!--<link rel="stylesheet" href="{{ url_for('static', filename='css/aperture.css') }}">-->
 {% endblock %}
 
 {% block content %}
 
-<div class="aperture-centered">
-    {% if data.title %}
-    <h2>{{ data.title }}</h2>
-    {% endif %}
-    
-    <p style="white-space: pre-line;">{{ data.text | safe }}</p>
-    
-    <div class="image-centered">
-        <img src="{{ url_for('static', filename=data.image) }}" alt="Aperture image" class="img-fluid my-4">
+<div class="row align-items-start justify-content-center contents ap-contents">
+    <div class="row first-row ">
+        <div class="col-md-1 left-rec-container">
+            <div class="left-rec"></div>
+        </div>
+        <div class="col-md-11 learn-texts align-self-center">
+            {{data.text | safe}}
+        </div>
     </div>
-
-    <form method="POST" class="button-container">
+    
+    <div class="row image-container justify-content-center">
         {% if step == 1 %}
-            <a href="/learn/aperture/cover" class="btn-secondary">Back</a>
-        {% elif step > 1 %}
-            <button name="action" value="prev" class="btn-secondary">Back</button>
+            <img src="{{ url_for('static', filename=data.image) }}" alt="Aperture image" class="img-fluid my-4 ap-img">
+        {% else %}
+            <img src="{{ url_for('static', filename=data.image) }}" alt="Aperture image" class="img-fluid my-4 dof-img">
         {% endif %}
 
-        {% if step < total_steps %}
-            <button name="action" value="next" class="btn-next">Next</button>
-        {% elif step == total_steps %}
-            
-            <a href="/learn/shutter_speed/cover" class="btn-next">Next</a>
+    </div>
+
+    <form method="POST" class="next-btn-container row justify-content-end">
+        <div class ="col-auto back-btn">  
+            {% if step == 1 %}
+                <a href="/learn/aperture/cover" class="btn btn-secondary">Back</a>
+            {% elif step > 1 %}
+                <button name="action" value="prev" class="btn btn-secondary">Back</button>
+            {% endif %}
+        </div>
+
+        <div class="col-auto next-btn">  
+            {% if step < total_steps %}
+                <button name="action" value="next" class="btn btn-primary">Next</button>
+            {% elif step == total_steps %}
+
+                <a href="/learn/shutter_speed/cover" class="btn btn-primary">Shutter Speed -></a>
+        </div>  
 
         {% endif %}
         

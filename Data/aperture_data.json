@@ -2,12 +2,12 @@
  
   {
     "title": "",
-    "text": "<strong>Aperture</strong> is the opening in a lens that controls how much light enters the camera - wider apertures (like <strong>f/1.8</strong>) let in more light and create a <strong>blurry background</strong>, while narrower apertures (like <strong>f/16</strong>) let in less light and keep more of the scene in focus.",
+    "text": "<span>Aperture</span> is the opening in a lens that controls how much light enters the camera - wider apertures (like <span>f/1.8</span>) let in more light and create a <span>blurry background</span>, while narrower apertures (like <span>f/16</span>) let in less light and keep more of the scene in focus.",
     "image": "images/aperture_2.png"
   },
   {
     "title": "",
-    "text": "<strong>Depth of field</strong> is directly affected by aperture - a wide aperture (like <strong>f/1.8</strong>) creates a <strong>shallow depth of field</strong>, blurring the background, while a narrow aperture (like <strong>f/16</strong>) results in a <strong>deep depth of field</strong>, keeping more of the scene in focus.",
+    "text": "<span>Depth of field</span> is directly affected by aperture - a wide aperture (like <span>f/1.8</span>) creates a <span>shallow depth of field</span>, blurring the background, while a narrow aperture (like <span>f/16</span>) results in a <span>deep depth of field</span>, keeping more of the scene in focus.",
     "image": "images/aperture_3.png"
   }
 ]

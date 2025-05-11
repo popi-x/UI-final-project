@@ -2,21 +2,21 @@
   
   {
     "title": "",
-    "text": "<strong>Shutter speed</strong> is the amount of time the camera's shutter is open. A <strong>fast shutter speed</strong> (like <strong>1/1000s</strong>) freezes motion, while a <strong>slow shutter speed</strong> (like <strong>1/30s</strong>) captures blur and movement.\n\nThe pinwheel shows how fast and slow shutter speeds create different visual effects.",
+    "text": "<span>Shutter speed</span> is the amount of time the camera's shutter is open. A <span>fast shutter speed</span> (like <span>1/1000s</span>) freezes motion, while a <span>slow shutter speed</span> (like <span>1/30s</span>) captures blur and movement.\n\nThe pinwheel shows how fast and slow shutter speeds create different visual effects.",
     "images": ["images/shutter_2.png", "images/shutter_3.png"],
     "small_right": true
 
   },
   {
     "title": "",
-    "text": "<strong>Fast shutter</strong>: ideal for freezing moments, like the intense moments of athletes competing. \n<strong>Slow shutter</strong>: typically used to capture motion, such as a starry night or a flowing waterfall.\n\nThe right shutter speed can balance both freezing the moment and capturing motion in a single photo.",
-    "images": ["images/shutter_4.png", "images/shutter_5.png"]
+    "text": "<span>Fast shutter speed</span>: ideal for freezing moments, like the intense moments of athletes competing. \n<br><br><br><span>Slow shutter speed</span>: typically used to capture motion, such as a starry night or a flowing waterfall.\n\nThe right shutter speed can balance both freezing the moment and capturing motion in a single photo.",
+    "images": ["images/slowss_1.png", "images/slowss_2.png", "images/fastss_1.png", "images/fastss_2.png"]
   },
   
   {
     "title": "",
     "text": "Recommended shutter speeds for specific scenarios:",
     "note": "When the shutter speed gets too slow, it becomes difficult to keep the camera steady by hand, and that's when you need a tripod!",
-    "images": ["images/shutter_6.png"]
+    "images": ["images/rss_1.png", "images/rss_2.png", "images/rss_3.png", "images/rss_4.png", "images/rss_5.png", "images/rss_6.png"]
 }
 ]
