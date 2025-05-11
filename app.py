@@ -220,8 +220,11 @@ def quiz_feedback(question_id):
 
     image_files = image_sets.get(question_id, [])
 
+    is_mcq = question_id == 7
+
     return render_template(
         "quiz_answer.html",
+        is_mcq = is_mcq,
         question_id=question_id,
         user_answers=user_answers,
         correct_answers=correct,

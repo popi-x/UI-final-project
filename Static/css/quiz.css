@@ -18,18 +18,20 @@
 /*Drag and Drop*/
   .dropzone {
     width: 100%;
-    height: 40px;
+    height: 60px;
     border: 2px dashed #525B76;  
     background-color: #F3F3F7;    
-    text-align: center;
     line-height: 40px;
     font-weight: bold;
     border-radius: 6px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
   }
   
 
 .draggable {
-  width: auto;
+  width: 100%;
   height: auto;
   background-color: #F3F3F7;
   box-shadow: 2pt 2pt 4pt black;
@@ -149,4 +151,23 @@
 #mcq-scenario{
   font-size: 1rem;
   margin-bottom: 2.5rem;
+}
+
+.mcq-btn{
+  border: 1px solid #419FB4;
+  color: #419FB4;
+}
+
+.mcq-btn:hover{
+  background-color: #419FB4;
+  color: white;
+  border-color: #419FB4;
+  transform: translateY(-1.2px);
+  box-shadow: 0 0 0.25rem rgba(0,0,0,0.2);
+}
+
+.mcq-btn.active {
+  background-color: #419FB4;
+  color: white;
+  border-color: #419FB4;
 }
