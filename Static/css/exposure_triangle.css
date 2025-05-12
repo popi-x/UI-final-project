@@ -73,6 +73,11 @@ body {
     height: auto;
     margin-top: 20px;
 }
+.image-centered img.big-image {
+    max-width: 1000px !important;
+    width: 100%;
+}
+
 
 .choice-container {
     margin-top: 20px;
@@ -144,14 +149,15 @@ body {
 
 .image-footnote {
     text-align: center;
-    font-size: 0.65rem;   /* SMALLER! This will now look like real footnote size */
+    font-size: 0.35rem;   /* SMALLER! This will now look like real footnote size */
     color: #aaa;          /* LIGHTER GRAY so it looks less prominent */
     margin-top: 5px;
     font-style: italic;
 }
 
 .big-image {
-    max-width: 800px;
+    max-width: 100%;
+    width:100%
 }
 
 .image-block {
@@ -205,11 +211,20 @@ body {
 
 .clickable-part {
     position: absolute;
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
     cursor: pointer;
-    background-color: rgba(255, 0, 0, 0.2);  /* Optional for debug → shows red overlay so you can test */
+    background-color: rgba(255, 0, 0, 0.1);  /* very subtle red for visibility */
+    border: 2px solid transparent;
+    transition: border 0.2s ease, background-color 0.2s ease;
 }
+
+.clickable-part:hover {
+    border: 2px solid #ffa770; /* blue border highlight on hover */
+    background-color: rgba(0, 118, 255, 0.2); /* blue highlight on hover */
+    z-index: 10;
+}
+
 
 .camera-info {
     font-size: 1.2rem;
@@ -221,3 +236,49 @@ body {
     margin: 30px auto;
     padding: 0 3rem;
 }
+
+.camera-flex-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 2rem;
+}
+
+.camera-info {
+    font-size: 1.2rem;
+    color: #444;
+    max-width: 200px;
+}
+
+.camera-layout-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.camera-info-side {
+    font-size: 1.1rem;
+    color: #444;
+    max-width: 250px;
+    line-height: 1.6;
+}
+
+.camera-info-fixed {
+    position: absolute;
+    top: 50px;
+    left: 750px; /* adjust as needed to match your layout width */
+    font-size: 1.2rem;
+    color: #333;
+    max-width: 250px;
+}
+#camera-info {
+    white-space: nowrap;
+}
+
+
+
