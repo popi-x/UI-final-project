@@ -1,5 +1,13 @@
 body {
     background-color: #F3F3F7;
+    font-family: "inter", sans-serif;
+    font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+}
+
+.custom-vp-width{
+    margin-top: 5% !important;
+    justify-content: center;
+    align-items: center;
 }
 
 .exposure-page1 {
@@ -17,13 +25,11 @@ body {
 }
 
 .exposure-page1 .text h1 {
-    font-family: 'Inter', sans-serif;
     font-size: 4rem;
     font-weight: bold;
 }
 
 .exposure-page1 .text p {
-    font-family: 'Merriweather', serif;
     font-size: 1.5rem;
     color: #525B76;
 }
@@ -48,13 +54,10 @@ body {
 }
 
 .exposure-centered h2 {
-    font-family: 'Inter', sans-serif;
     font-weight: bold;
 }
 
 .exposure-centered p {
-    font-family: 'Merriweather', serif;
-    font-size: 1.3rem;
     color: #333333;
     line-height: 1.8;
 }
@@ -131,8 +134,6 @@ body {
 .exposure-sidebyside .text {
     flex: 7;
     padding-right: 40px;
-    font-family: 'Merriweather', serif;
-    font-size: 1.3rem;
     color: #333333;
     line-height: 1.8;
 }
@@ -149,7 +150,7 @@ body {
 
 .image-footnote {
     text-align: center;
-    font-size: 0.35rem;   /* SMALLER! This will now look like real footnote size */
+    font-size: 1rem !important; /* SMALLER! This will now look like real footnote size */
     color: #aaa;          /* LIGHTER GRAY so it looks less prominent */
     margin-top: 5px;
     font-style: italic;

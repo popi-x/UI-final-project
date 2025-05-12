@@ -256,12 +256,16 @@ span{
 }
 
 /* ---------- Aperture contents ---------- */
+.ap-contents .image-container{
+  width: 75%;
+}
+
 .ap-contents .ap-img{
   width: 85%;
 }
 
 .ap-contents .dof-img{
-  width: 100%;
+  width: 170%;
 }
 
 /* ---------- Shutter Speed contents ---------- */
@@ -312,8 +316,9 @@ span{
   height: 100%;
 }
 
-.ss-contents .learn-texts .row{
+.ss-contents .learn-texts{
   width: 100%;
+  font-size: clamp(0.5rem, 1.7vh, 1.5rem);
 }
 
 .ss-contents .learn-texts .shutter-speed-title{
@@ -323,6 +328,11 @@ span{
 .ss-contents .learn-texts .shutter-speed-title.active{
   color: #FFA770;
 }
+
+.ss-contents .learn-texts .hint{
+  color: #419FB4
+}
+
 .ss-contents .page-3 .img-container{
   height: 90%;
   border-color: #FFA770;
@@ -335,7 +345,7 @@ span{
   display: none;
 }
 
-.ss-contents .page-3 .hint{
+.ss-contents .page-3 .img-hint{
   font-size: clamp(0.5rem, 1.3vw, 1.5rem);
   color: #fac8a8;
   font-weight: bold;

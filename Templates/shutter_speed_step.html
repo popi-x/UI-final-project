@@ -67,39 +67,44 @@
     {% else %}
     <h3 class="row title justify-content-start">Recommended shutter speeds for specific scenarios</h3>
     <div class="row text-img-container page-3">
-        <div class="col-6 learn-texts pt-5">
-            <div class="row">
-                <span class="row shutter-speed-title" data-img="0">1/1000s</span>
-                <div class="row">Capturing a sprinter racing down the track or a bird flying in the sky.</div>
-            </div>
-            <br>
-            <div class="row">
-                <span class="row shutter-speed-title" data-img="1">1/500s</span>
-                <div class="row">Photographing a cyclist speeding on a road or a car drifting on a race track.</div>
-            </div>
-            <br>
-            <div class="row">
-                <span class="row shutter-speed-title" data-img="2">1/250s</span>
-                <div class="row">Freezing motion of a person running across the street or a dog playing fetch.</div>
-            </div>
-            <br>
-            <div class="row">
-                <span class="row shutter-speed-title" data-img="3">1/30s</span>
-                <div class="row">Creating a motion blur effect of flowing water in a stream or people walking in a crowd at night.</div>
-            </div>
-            <br>
-            <div class="row">
-                <span class="row shutter-speed-title" data-img="4">1/15s</span>
-                <div class="row">Capturing light trails of moving cars on a highway or the soft motion of a waterfall.</div>
-            </div>
-            <br>
-            <div class="row">
-                <span class="row shutter-speed-title" data-img="5">10s</span>
-                <div class="row">Photographing star trails as the Earth rotates, or capturing the motion of clouds in a dramatic sky.</div>
-            </div>
+        <div class="col-5 learn-texts pt-5 px-0">
+          <div class="shutter-item mb-4">
+            <span class="shutter-speed-title fw-bold d-block" data-img="0">1/1000s</span>
+            <div>Capturing a sprinter racing down the track or a bird flying in the sky.</div>
+          </div>
+      
+          <div class="shutter-item mb-4">
+            <span class="shutter-speed-title fw-bold d-block" data-img="1">1/500s</span>
+            <div>Photographing a cyclist speeding on a road or a car drifting on a race track.</div>
+          </div>
+      
+          <div class="shutter-item mb-4">
+            <span class="shutter-speed-title fw-bold d-block" data-img="2">1/250s</span>
+            <div>Freezing motion of a person running across the street or a dog playing fetch.</div>
+          </div>
+      
+          <div class="shutter-item mb-4">
+            <span class="shutter-speed-title fw-bold d-block" data-img="3">1/30s</span>
+            <div>Creating a motion blur effect of flowing water in a stream or people walking in a crowd at night.</div>
+          </div>
+      
+          <div class="shutter-item mb-4">
+            <span class="shutter-speed-title fw-bold d-block" data-img="4">1/15s</span>
+            <div>Capturing light trails of moving cars on a highway or the soft motion of a waterfall.</div>
+          </div>
+      
+          <div class="shutter-item mb-4">
+            <span class="shutter-speed-title fw-bold d-block" data-img="5">10s</span>
+            <div>Photographing star trails as the Earth rotates, or capturing the motion of clouds in a dramatic sky.</div>
+          </div>
+      
+          <div class="hint mt-4">
+            When the shutter speed gets too slow, it becomes difficult to keep the camera steady by hand, and that's when you need a tripod!
+          </div>
         </div>
-        <div class="col-6">
-            <div class="row hint">
+
+        <div class="col-6 offset-1">
+            <div class="row img-hint">
                 Click on the shutter speed to see the example image
             </div>
             <div class="row img-container justify-content-center align-items-center">
@@ -184,7 +189,7 @@
                 <button name="action" value="next" class="btn btn-primary">Next</button>
             {% elif step == total_steps %}
 
-                <a href="/learn/exposure_triangle/cover" class="btn btn-primary">Exposure Triangle -></a>
+                <a href="/learn/exposure_triangle/cover" class="btn btn-primary">Exposure Triangle →</a>
         </div>  
 
         {% endif %}

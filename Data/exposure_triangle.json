@@ -1,13 +1,13 @@
 [
     {
       "title": "",
-      "text": "Exposure is controlled by adjusting ISO, aperture, and shutter speed—shown together in the <strong>Exposure Triangle</strong>.\n\n\n\nThe diagram illustrates how each setting affects brightness and image quality. For example, higher ISO increases exposure (EV) but also noise.",
+      "text": "Exposure is controlled by adjusting ISO, aperture, and shutter speed—shown together in the <span>Exposure Triangle</span>.\n\n\n\nThe diagram illustrates how each setting affects brightness and image quality. For example, higher ISO increases exposure (EV) but also noise.",
       "image": "images/exposure_triangle_2.png",
       "image_caption": "Diagram showing exposure triangle with relationships."
     },
     {
       "title": "",
-      "text": "A common question is: <strong>will adjust one parameter in the exposure triangle change the other two accordingly? No¹!</strong> \n\nIndeed, these parameters are <strong>independent</strong> of each other. To get the optimal exposure, we need to “balance” them. For example, increasing shutter speed reduces EV, so you may need to compensate by increasing either or both of ISO and aperture.",
+      "text": "A common question is: <span>will adjust one parameter in the exposure triangle change the other two accordingly? No¹!</span> \n\nIndeed, these parameters are <span>independent</span> of each other. To get the optimal exposure, we need to “balance” them. For example, increasing shutter speed reduces EV, so you may need to compensate by increasing either or both of ISO and aperture.",
       "image": "images/exposure_triangle_3.png",
       "image_footnote": "¹However, in certain camera modes, the device automatically adjusts settings to maintain the same exposure value (EV), which might give the impression that these parameters influence each other.",
       "caption": "Shutter Speed increase → EV Decrease → Increase ISO or Increase Aperture → Proper Exposure\n\nYou might not need to make any adjustments if the EV remains optimal."
@@ -15,21 +15,21 @@
     
     {
       "title": "",
-      "text": "Most modern cameras have auto modes that adjust exposure for you.\n\nAuto mode is easy, but manual settings give you <strong>more creative control</strong>. On the right is a mode dial commonly found on cameras. You can rotate it to between AUTO and M to switch settings.\n\n\n\n Ready to apply what you’ve learned? Click <strong> \"Next\" </strong> to explore hands-on exposure challenges.",
+      "text": "Most modern cameras have auto modes that adjust exposure for you.\n\nAuto mode is easy, but manual settings give you <span>more creative control</span>. On the right is a mode dial commonly found on cameras. You can rotate it to between AUTO and M to switch settings.\n\n\n\n Ready to apply what you’ve learned? Click <span> \"Next\" </span> to explore hands-on exposure challenges.",
       "image": "images/exposure_triangle_4.png",
       "image_secondary": "images/exposure_triangle_5.gif"
     },
     
     {
       "title": "",
-      "text": "<strong>A quick question to test your understanding:</strong>\n\nIf you want to catch the freezing moment of a moving object (e.g., a cyclist) in a dark environment, how should you adjust the settings?\n\n<span style='font-size: 0.95rem;'><strong>Current parameters:</strong> shutter speed: 1/30s aperture: f/5.6 ISO: 100 EV: -2</span>\n\nI should first adjust……",
+      "text": "<span>A quick question to test your understanding:</span>\n\nIf you want to catch the freezing moment of a moving object (e.g., a cyclist) in a dark environment, how should you adjust the settings?\n\n<span style='font-size: 0.95rem;'><span>Current parameters:</span> shutter speed: 1/30s aperture: f/5.6 ISO: 100 EV: -2</span>\n\nI should first adjust……",
       "image_caption": "Choose the setting to adjust first.",
       "choices": ["Shutter speed", "ISO", "Aperture", "I don't know"]
     },
     
     {
       "title": "",
-      "text": "After increasing the shutter speed, what should you adjust next to capture a moving object in the dark?\n\n<strong>Hint:</strong> A fast shutter speed reduces EV. To maintain proper exposure, increase aperture or ISO.\n\n<span style='font-size: 0.95rem;'><strong>Current parameters:</strong> shutter speed: 1/500s aperture: f/5.6 ISO: 100 EV: -3</span>\n\nI should then adjust……",
+      "text": "After increasing the shutter speed, what should you adjust next to capture a moving object in the dark?\n\n<span>Hint:</span> A fast shutter speed reduces EV. To maintain proper exposure, increase aperture or ISO.\n\n<span style='font-size: 0.95rem;'><span>Current parameters:</span> shutter speed: 1/500s aperture: f/5.6 ISO: 100 EV: -3</span>\n\nI should then adjust……",
       "image": "images/exposure_triangle_6.png",
       "choices": ["ISO", "Aperture", "I don’t know"],
       "side_note": "Faster shutter captures clear motion ↓",
@@ -39,7 +39,7 @@
     
     {
       "title": "",
-      "text": "It is better to first adjust aperture for low EV because <strong>high ISO introduces more noise!</strong> This way, you can keep the ISO as low as possible.\n\n<span style='font-size: 0.95rem;'><strong>Current parameters:</strong> shutter speed: 1/500s aperture: f/2.8 ISO: 100 EV: -2</span>\n\nBut sometimes even with the widest aperture, the EV is still too low. So we then increase ISO to reach proper exposure.\n\n<span style='font-size: 0.95rem;'><strong>Current parameters:</strong> shutter speed: 1/500s aperture: f/2.8 ISO: 2000 EV: 0</span>\n\n\n<strong>Now you get the perfect shot!</strong>",
+      "text": "It is better to first adjust aperture for low EV because <span>high ISO introduces more noise!</span> This way, you can keep the ISO as low as possible.\n\n<span style='font-size: 0.95rem;'><span>Current parameters:</span> shutter speed: 1/500s aperture: f/2.8 ISO: 100 EV: -2</span>\n\nBut sometimes even with the widest aperture, the EV is still too low. So we then increase ISO to reach proper exposure.\n\n<span style='font-size: 0.95rem;'><span>Current parameters:</span> shutter speed: 1/500s aperture: f/2.8 ISO: 2000 EV: 0</span>\n\n\n<span>Now you get the perfect shot!</span>",
       "image": "images/exposure_triangle_7.png",
       "image_caption": "The shot after adjusting aperture only (still underexposed)",
       "image_secondary": "images/exposure_triangle_8.png",

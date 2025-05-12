@@ -15,13 +15,14 @@
         </div>
     </div>
     
-    <div class="row image-container justify-content-center">
+    <div class="row image-container justify-content-center ">
+        <div class="col-12 text-center">
         {% if step == 1 %}
             <img src="{{ url_for('static', filename=data.image) }}" alt="Aperture image" class="img-fluid my-4 ap-img">
         {% else %}
             <img src="{{ url_for('static', filename=data.image) }}" alt="Aperture image" class="img-fluid my-4 dof-img">
         {% endif %}
-
+        </div>
     </div>
 
     <form method="POST" class="next-btn-container row justify-content-end">
@@ -38,7 +39,7 @@
                 <button name="action" value="next" class="btn btn-primary">Next</button>
             {% elif step == total_steps %}
 
-                <a href="/learn/shutter_speed/cover" class="btn btn-primary">Shutter Speed -></a>
+                <a href="/learn/shutter_speed/cover" class="btn btn-primary">Shutter Speed →</a>
         </div>  
 
         {% endif %}
