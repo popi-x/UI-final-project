@@ -79,3 +79,25 @@ $(document).ready(function () {
     }
   });
 });
+
+// Clear answer functionality
+$('#clear-answer-btn').on('click', function () {
+  // Reset all dropzones
+  $('.dropzone').each(function () {
+    $(this).text('').removeAttr('data-value').removeData('value');
+  });
+
+  // Re-enable draggable items
+  $('.draggable').each(function () {
+    $(this).removeClass('used');
+    $(this).draggable('enable');
+  });
+
+  // Reset slider (if it's a slider question like quiz 3)
+  const slider = document.getElementById("aperture-slider");
+  const label = document.getElementById("aperture-value");
+  if (slider && label && window.apertureValues) {
+    slider.value = 0;
+    label.textContent = window.apertureValues[0];
+  }
+});
