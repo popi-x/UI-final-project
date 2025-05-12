@@ -1,0 +1,54 @@
+[
+    {
+      "title": "",
+      "text": "Earlier, we introduced the idea of exposure—you might’ve been wondering how exactly it can be adjusted. The answer is by adjusting parameters we have learnt in previous sections: ISO, aperture, and shutter speed.\n\nWe use <strong>exposure triangle</strong> to refer to the interplay of them. The figure on the right hand side is an example of such triangle. It illustrates how each setting influences exposure—for example, increasing ISO results in a higher EV.",
+      "image": "images/exposure_triangle_2.png",
+      "image_caption": "Diagram showing exposure triangle with relationships."
+    },
+    {
+      "title": "",
+      "text": "One of the misinterpretation of Exposure triangle is that if we adjust one parameter the other two will change accordingly. This is totally wrong¹! Keep in mind that these parameters are independent of each other, and they will only affect EV. To keep the optimal exposure, we need to “balance” them.\n\nFor example, increasing shutter speed reduces EV, so you may need to compensate by adjusting one or both of the other settings — such as raising the ISO.",
+      "image": "images/exposure_triangle_3.png",
+      "image_footnote": "¹Technically, this isn't entirely incorrect, as in certain camera modes, the device automatically adjusts settings to maintain the same exposure value (EV), which might give the impression that these parameters influence each other."
+    },
+    {
+      "title": "",
+      "text": "Most modern cameras have some modes where they adjust the settings for you to match the exposure you want.\n\nWhile auto mode is convenient, learning to adjust settings manually can offer much more creative control. Here's a simple exercise to give you a general idea of how it works.\n\nIf you want to catch the freezing moment of a moving object (e.g. cyclist) in a dark environment, how should you adjust the settings?",
+      "image": "images/exposure_triangle_4.png",
+      "image_secondary": "images/exposure_triangle_5.gif"
+    },
+    
+    {
+      "title": "",
+      "text": "If you want to catch the freezing moment of a moving object (e.g. cyclist) in a dark environment, how should you adjust the settings?\n\nCurrent parameters: shutter speed: 1/30s, aperture: f/5.6, ISO: 100, EV: -2. \n\nI should first adjust……",
+      "image_caption": "Choose the setting to adjust first.",
+      "choices": ["Shutter speed", "ISO", "Aperture", "I don't know"]
+    },
+    
+    {
+      "title": "",
+      "text": "It's normal to feel overwhelmed when adjusting all the settings for the first time.\n\nThink about the most important feature you want to capture in the scene, and which parameter can help us achieve that. Apparently, “the freezing moment” is what we care about and we can make <a href=\"/learn/shutter_speed/1\">shutter speed</a> to achieve that.\n\nCurrent parameters:\nshutter speed: 1/500s\naperture: f/5.6\nISO: 100\nEV: -3",
+      "image": "images/exposure_triangle_6.png",
+      "choices": ["ISO", "Aperture", "I don’t know"],
+      "side_note": "According to the exposure triangle, increasing the shutter speed while keeping other two unchanged will reduce the EV.",
+      "side_note_image": "images/exposure_triangle_6.png",
+      "side_note_image_caption": "This is the image after changing the shutter speed."
+    },
+    
+    {
+      "title": "",
+      "text": "While either aperture or ISO could be adjusted, it is better to start with aperture because high ISO introduces more noise. This way, you can keep the ISO as low as possible.\n\nCurrent parameters: shutter speed: 1/500s, aperture: f/2.8, ISO: 100, EV: -2.\n\nHowever even if we increase the aperture to the largest, the EV doesn’t improve much and we have to increase the ISO to reach the optimal EV.\n\nCurrent parameters: shutter speed: 1/500s, aperture: f/2.8, ISO: 2000, EV: 0.\n\nNow you get the perfect shot!",
+      "image": "images/exposure_triangle_7.png",
+      "image_caption": "The shot after adjusting aperture only (still underexposed)",
+      "image_secondary": "images/exposure_triangle_8.png",
+      "image_secondary_caption": "The final shot after increasing ISO (perfect exposure)"
+    },
+    
+    {
+      "title": "How does this work on a real camera?",
+      "text": "Click on different parts of the camera. What does this part control?",
+      "image": "images/exposure_triangle_9.png",
+      "clickable_parts": ["ISO", "Shutter Speed", "Aperture", "Exposure"]
+    }
+  ]
+  

@@ -1,0 +1,247 @@
+{% extends "layout.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/exposure_triangle.css') }}">
+{% endblock %}
+
+{% block content %}
+
+
+{# ---------- PAGE 1 ---------- #}
+{% if step == 1 %}
+<div class="exposure-sidebyside">
+    <div class="text">
+        <h2>{{ data.title }}</h2>
+        <p style="white-space: pre-line;">{{ data.text | safe }}</p>
+    </div>
+    <div class="image">
+        <img src="{{ url_for('static', filename=data.image) }}" alt="{{ data.image_caption }}">
+    </div>
+</div>
+<form method="POST" class="button-container">
+    
+    <a href="/learn/exposure_triangle/cover" class="btn-secondary">Back</a>
+    <button name="action" value="next" class="btn-next">Next</button>
+</form>
+
+{# ---------- PAGE 2 ---------- #}
+{% elif step == 2 %}
+<div class="exposure-centered">
+    {% if data.title %}
+    <h2>{{ data.title }}</h2>
+    {% endif %}
+    <p style="white-space: pre-line;">{{ data.text | safe }}</p>
+
+    <div class="image-centered">
+        <img src="{{ url_for('static', filename=data.image) }}" alt="Exposure Triangle Image" class="big-image">
+        {% if data.image_caption %}
+        <p class="image-caption">{{ data.image_caption }}</p>
+        {% endif %}
+        {% if data.image_footnote %}
+        <p class="image-footnote">{{ data.image_footnote }}</p>
+        {% endif %}
+    </div>
+</div>
+
+<form method="POST" class="button-container">
+    <button name="action" value="prev" class="btn-secondary">Back</button>
+    <button name="action" value="next" class="btn-next">Next</button>
+</form>
+
+{# ---------- PAGE 3 ---------- #}
+{% elif step == 3 %}
+<div class="exposure-sidebyside">
+    <div class="text">
+        {% if data.title %}
+        <h2>{{ data.title }}</h2>
+        {% endif %}
+        <p style="white-space: pre-line;">{{ data.text | safe }}</p>
+    </div>
+    <div class="image">
+        <div class="image-block">
+            <img src="{{ url_for('static', filename=data.image) }}" alt="Primary Image">
+            {% if data.image_caption %}
+            <p class="image-caption">{{ data.image_caption }}</p>
+            {% endif %}
+        </div>
+        <div class="image-block">
+            <img src="{{ url_for('static', filename=data.image_secondary) }}" alt="Secondary Image">
+            {% if data.image_secondary_caption %}
+            <p class="image-caption">{{ data.image_secondary_caption }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<form method="POST" class="button-container">
+    <button name="action" value="prev" class="btn-secondary">Back</button>
+    <button name="action" value="next" class="btn-next">Next</button>
+</form>
+
+{# ---------- PAGE 5 ---------- #}
+{% elif step == 5 %}
+<div class="exposure-centered">
+
+<div class="page6-wrapper">
+  <div class="page6-main">
+     <p style="white-space:pre-line;">{{ data.text | safe }}</p>
+
+     {% if feedback %}
+     <p style="color:red;font-weight:bold;">{{ feedback }}</p>
+     {% endif %}
+
+     {% if data.choices %}
+     <form method="POST" class="choice-container">
+        {% for choice in data.choices %}
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="answer" value="{{ choice }}" id="{{ choice }}" required>
+          <label class="form-check-label" for="{{ choice }}">{{ choice }}</label>
+        </div>
+        {% endfor %}
+        <br>
+     {% endif %}
+  </div>
+
+  <div class="page6-note">
+     {{ data.side_note | safe }}
+     {% if data.side_note_image %}
+    <img src="{{ url_for('static', filename=data.side_note_image) }}" alt="note image">
+    {% if data.side_note_image_caption %}
+    <p class="image-footnote">{{ data.side_note_image_caption }}</p>
+    {% endif %}
+    {% endif %}
+  </div>
+</div>
+
+<div class="button-container-right">
+    <form method="POST">
+        <button name="action" value="prev" class="btn-secondary">Back</button>
+        <button name="action" value="next" class="btn-next">Next</button>
+    </form>
+</div>
+
+
+
+
+{% elif step == 6 %}
+<div class="exposure-sidebyside">
+    <div class="text">
+        {% if data.title %}
+        <h2>{{ data.title }}</h2>
+        {% endif %}
+        <p style="white-space: pre-line;">{{ data.text | safe }}</p>
+    </div>
+
+    <div class="image-column">
+        {% if data.image %}
+        <div class="image-block">
+            <img src="{{ url_for('static', filename=data.image) }}" alt="Exposure">
+            {% if data.image_caption %}
+            <p class="image-caption">{{ data.image_caption }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if data.image_secondary %}
+        <div class="image-block">
+            <img src="{{ url_for('static', filename=data.image_secondary) }}" alt="Exposure">
+            {% if data.image_secondary_caption %}
+            <p class="image-caption">{{ data.image_secondary_caption }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<form method="POST" class="button-container">
+    <button name="action" value="prev" class="btn-secondary">Back</button>
+    <button name="action" value="next" class="btn-next">Next</button>
+</form>
+
+{% elif step == 7 %}
+<div class="exposure-centered">
+    <h2>How does this work on a real camera?</h2>
+    <p>Click on different parts of the camera. What does this part control?</p>
+
+    <div class="camera-container">
+        <img src="{{ url_for('static', filename='images/exposure_triangle_9.png') }}" alt="Camera" class="camera-image">
+
+        <div class="clickable-part" style="top: 30px; left: 280px;" onclick="showPart('ISO')"></div>
+        <div class="clickable-part" style="top: 130px; left: 370px;" onclick="showPart('Shutter Speed')"></div>
+        <div class="clickable-part" style="top: 200px; left: 350px;" onclick="showPart('Aperture')"></div>
+        <div class="clickable-part" style="top: 180px; left: 400px;" onclick="showPart('Exposure')"></div>
+    </div>
+
+    <p id="camera-info" class="camera-info">Click on a part to learn more.</p>
+</div>
+
+
+<form method="POST" class="button-container">
+    <button name="action" value="prev" class="btn-secondary">Back</button>
+
+    <a href="{{ url_for('quiz_view', question_id=1) }}" class="btn-next">Next</a>
+
+</form>
+
+
+<script>
+function showPart(part) {
+    document.getElementById('camera-info').innerText = "This controls: " + part;
+}
+</script>
+
+{# ---------- OTHER PAGES ---------- #}
+{% else %}
+<div class="exposure-centered">
+    {% if data.title %}
+    <h2>{{ data.title }}</h2>
+    {% endif %}
+    <p style="white-space: pre-line;">{{ data.text | safe }}</p>
+
+    {% if data.image %}
+    <div class="image-centered">
+        <img src="{{ url_for('static', filename=data.image) }}" alt="Exposure Triangle Image">
+        {% if data.image_caption %}
+        <p class="image-caption">{{ data.image_caption }}</p>
+        {% endif %}
+        {% if data.image_footnote %}
+        <p class="image-footnote">{{ data.image_footnote }}</p>
+        {% endif %}
+    {% if data.image_secondary %}
+    <img src="{{ url_for('static', filename=data.image_secondary) }}" alt="illustration">
+    {% if data.image_secondary_caption %}
+    <p class="image-footnote">{{ data.image_secondary_caption }}</p>
+    {% endif %}
+    {% endif %}
+        
+    </div>
+    {% endif %}
+
+    {% if feedback %}
+    <p style="color: red; font-weight: bold; text-align: center;">{{ feedback }}</p>
+    {% endif %}
+
+    {% if data.choices %}
+    <form method="POST" class="choice-container">
+        {% for choice in data.choices %}
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="answer" value="{{ choice }}" id="{{ choice }}" required>
+            <label class="form-check-label" for="{{ choice }}">{{ choice }}</label>
+        </div>
+        {% endfor %}
+        <br>
+    {% endif %}
+
+    <form method="POST" class="button-container">
+        {% if step > 1 %}
+        <button name="action" value="prev" class="btn-secondary">Back</button>
+        {% endif %}
+        {% if step < total_steps %}
+        <button name="action" value="next" class="btn-next">Next</button>
+        {% elif step == total_steps %}
+        <a href="{{ url_for('quiz_home') }}" class="btn-done">Done</a>
+        {% endif %}
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}

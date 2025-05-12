@@ -1,47 +1,196 @@
 {% extends "layout.html" %}
-{% block content %}
+{% block styles %}
+{% endblock %}
 
-{% if step == 1 %}
-  <div class="cover row  align-items-center">
-        <div class="col-md-6">
-            <h1>Shutter Speed</h1>
-            <p class="sub-title">Freeze the moment or capture motion - your choice.
-    </p>
+{% block content %}     
+<script src="{{ url_for('static', filename='js/shutter_speed.js') }}"></script>
+<script>
+    const data={{ data | tojson }}
+</script>
+
+
+<div class="row justify-content-center align-items-start contents ss-contents">
+    {% if step == 1 %}
+        <div class="row text-img-container">
+            <div class="col-md-1 left-rec-container">
+                <div class="left-rec"></div>
+            </div>
+            <div class="learn-texts col-md-4 align-self-center">
+                {{ data.text | safe }}
+            </div>
+
+            <div class="col-md-6 offset-md-1 img-grid">
+                <div class="img-container row">
+                    <div class="col-md-8">
+                        <img src="{{ url_for('static', filename=data.images[0] ) }}" alt="Shutter speed visual" >
+                    </div>
+                </div> 
+                <br><br>
+                <div class="img-container row">
+                    <div class="col-md-8 offset-md-4">
+                        <img src="{{ url_for('static', filename=data.images[1] ) }}" alt="Shutter speed visual" >
+                    </div>
+                </div>
+            </div>
+        </div>  
+    
+    {% elif step == 2 %}
+        <div class="row text-img-container">
+            <div class="col-md-4 left-img">
+                <div class="row">
+                    <div class="col-md-6 img-container">
+                        <img src="{{ url_for('static', filename=data.images[2] ) }}" alt="slow shutter speed example" class="img-fluid">
+                    </div>
+                    <div class="col-md-6 img-container">
+                        <img src="{{ url_for('static', filename=data.images[3] ) }}" alt="slow shutter speed example" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 learn-texts align-self-center pt-4">
+                {{ data.text | safe }}
+            </div>
+            
+            <div class="col-md-4 right-img">
+                <div class="row align-items-end">
+                    <div class="col-md-6 img-container">
+                        <img src="{{ url_for('static', filename=data.images[0] ) }}" alt="fast shutter speed example" class="img-fluid">
+                    </div>
+                    <div class="col-md-6 img-container">
+                        <img src="{{ url_for('static', filename=data.images[1] ) }}" alt="fast shutter speed example" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    {% else %}
+    <h3 class="row title justify-content-start">Recommended shutter speeds for specific scenarios</h3>
+    <div class="row text-img-container page-3">
+        <div class="col-6 learn-texts pt-5">
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="0">1/1000s</span>
+                <div class="row">Capturing a sprinter racing down the track or a bird flying in the sky.</div>
+            </div>
+            <br>
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="1">1/500s</span>
+                <div class="row">Photographing a cyclist speeding on a road or a car drifting on a race track.</div>
+            </div>
+            <br>
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="2">1/250s</span>
+                <div class="row">Freezing motion of a person running across the street or a dog playing fetch.</div>
+            </div>
+            <br>
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="3">1/30s</span>
+                <div class="row">Creating a motion blur effect of flowing water in a stream or people walking in a crowd at night.</div>
+            </div>
+            <br>
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="4">1/15s</span>
+                <div class="row">Capturing light trails of moving cars on a highway or the soft motion of a waterfall.</div>
+            </div>
+            <br>
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="5">10s</span>
+                <div class="row">Photographing star trails as the Earth rotates, or capturing the motion of clouds in a dramatic sky.</div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row hint">
+                Click on the shutter speed to see the example image
+            </div>
+            <div class="row img-container justify-content-center align-items-center">
+                <img src="" alt="" id="sample-img">
+            </div>
         </div>
 
-        <div class="image-content col-md-5 text-center">
-            <!-- Right side image - replace with your actual image source -->
-            <img src="{{url_for('static', filename='images/shutter_1.png')}}" alt="ISO Example" id="iso-cover-img" >
+
+
+        <!--<div class="row img-row justify-content-center">
+            <div class="col-md-4">
+                <div class="row img-container">
+                    <img src="{{ url_for('static', filename=data.images[0] ) }}" alt="1/1000s to capture the freezing moment of the flying bird" class="img-fluid">
+                </div>
+                <div class="row caption justify-content-center">
+                    1/1000s
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row img-container">
+                    <img src="{{ url_for('static', filename=data.images[1] ) }}" alt="1/500s to capture the freezing moment of the cyclist" class="img-fluid">
+                </div>
+                <div class="row caption">
+                    1/500s
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row img-container">
+                    <img src="{{ url_for('static', filename=data.images[2] ) }}" alt="1/250s to capture the freezing moment of the running dog" class="img-fluid">
+                </div>
+                <div class="row caption">
+                    1/250s
+                </div>
+            </div>
+
         </div>
-        <div class="col-md-1">
-            <a href="/shutter_speed/2" class="triangle-btn"></a>
-        </div>
+
+        <div class="row img-row justify-content-center">
+            <div class="col-md-4">
+                <div class="row img-container">
+                    <img src="{{ url_for('static', filename=data.images[3] ) }}" alt="1/30s to capture the motion of the flowing water" class="img-fluid">
+                </div>
+                <div class="row caption">
+                    1/30s
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="row img-container">
+                    <img src="{{ url_for('static', filename=data.images[4] ) }}" alt="1/15s to capture the light trails of moving cars" class="img-fluid">
+                </div>
+                <div class="row caption">
+                    1/15s
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row img-container">
+                    <img src="{{ url_for('static', filename=data.images[5] ) }}" alt="10s to capture the motion of the starry night" class="img-fluid">
+                </div>
+                <div class="row caption">
+                    10s
+                </div>
+            </div>
+        </div>-->
+
     </div>
-{% else %}
 
-<h2>{{ data.title }}</h2>
-
-<p style="white-space: pre-line;">{{ data.text }}</p>
-
-<div class="row">
-  {% for img in data.images %}
-    <div class="col-md-6">
-      <img src="{{ url_for('static', filename=img) }}" alt="Shutter speed visual" class="img-fluid my-3">
     </div>
-  {% endfor %}
+    {% endif %}
+
+     <form method="POST" class="next-btn-container row justify-content-end">
+        <div class ="col-auto back-btn">  
+            {% if step == 1 %}
+                <a href="/learn/shutter_speed/cover" class="btn btn-secondary">Back</a>
+            {% elif step > 1 %}
+                <button name="action" value="prev" class="btn btn-secondary">Back</button>
+            {% endif %}
+        </div>
+
+        <div class="col-auto next-btn">  
+            {% if step < total_steps %}
+                <button name="action" value="next" class="btn btn-primary">Next</button>
+            {% elif step == total_steps %}
+
+                <a href="/learn/exposure_triangle/cover" class="btn btn-primary">Exposure Triangle -></a>
+        </div>  
+
+        {% endif %}
+        
+        
+    </form>
 </div>
-
-{% endif %}
-
-<form method="POST">
-  {% if step > 1 %}
-    <button name="action" value="prev" class="btn btn-secondary">Back</button>
-  {% endif %}
-  {% if step < total_steps and step > 1%}
-    <button name="action" value="next" class="btn btn-primary float-end">Next</button>
-  {% elif step == total_steps %}
-    <a href="{{ url_for('triangle', step_id=1) }}" class="btn btn-success float-end">Done</a>
-  {% endif %}
-</form>
 
 {% endblock %}

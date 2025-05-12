@@ -1,15 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="homepage-layout">
-  <div class="left">
-    <h1 class="title">Camera<br>Basics</h1>
-    
-    <p class="subtitle move-down">Ready to dive into the basics of camera settings and begin a whole new journey?</p>
-
-    <a href="/learn/overview" class="btn-learn">Learn</a>
+<div class="homepage-layout row align-items-center">
+  <div class="col-5 left">
+    <p class="row title">Camera<br>Basics</h1>
+    <p class="row subtitle">Learn the basics of camera settings and take your photography to the next level.</p>
+    <br>
+    <div class="row learn-btn">
+      <a href="/learn/exposure/cover" class="btn btn-light d-flex align-items-center justify-content-center">Learn</a>
+    </div>
   </div>
-  <div class="right">
-    <img src="{{ url_for('static', filename='images/linework2.png') }}" alt="Camera illustration">
+
+  <div class="col-7 img-container">
+    <img src="{{ url_for('static', filename='images/linework2.png') }}" alt="Camera illustration" id="homepage-img">
   </div>
 </div>
 {% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+ <div class="cover row align-items-center justify-content-center">
+    <div class="col-1 left-rec-container">
+        <div class="left-rec"></div>
+    </div>
+    <p class="col-2 title align-self-start justify-content-center">{{ data[section].title }}</p>
+    <div class="col-9 right">
+        <div class="row justify-content-center">
+            <p class="col-10 subtitle align-self-center"> {{ data[section].subtitle }}</p>
+        </div>
+        <br>
+        <div class="row cover-img-container justify-content-center">
+            <div class="col-10">
+                <img src= "{{ url_for('static', filename=data[section].img) }}"  alt="{{data[section].title}} cover image" class="cover-img" >
+            </div>
+        </div>
+        <div class="row next-btn-container justify-content-end">
+            {% if section != 'exposure' %}
+                <div class="col-auto back-btn"> 
+                    <a href="{{ data[section].back_link }}" class="btn btn-primary">Back</a>
+                </div>
+            {% endif %}
+            <div class="col-auto next-btn"> 
+                <a href="/learn/{{ section }}/1" class="btn btn-light d-flex align-items-center justify-content-center">Next</a>
+            </div>
+        <div>
+    </div> 
+    
+</div>
+    
+    
+
+
+{% endblock %}

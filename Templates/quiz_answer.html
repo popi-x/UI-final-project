@@ -110,16 +110,27 @@
 {% endif %}
 
 
-  <!-- User Answer row -->
-  {% if question_id != 6 %}
+<!-- User Answer row -->
+{% if question_id != 6 %}
   <div class="row text-center mb-3">
-    {% for i in range(user_answers | length) %}
-      <div class="col">
-        <div class="dropzone" id="dropzone-{{ i }}">{{ user_answers[i] }}</div>
-      </div>
-    {% endfor %}
+    {% if is_mcq %}
+      {% for i in range(user_answers | length) %}
+        {% if user_answers[i] not in [None, "unselected"] %}
+          <div class="col">
+            <div class="dropzone" id="dropzone-{{ i }}">{{ user_answers[i] }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% for i in range(user_answers | length) %}
+        <div class="col">
+          <div class="dropzone" id="dropzone-{{ i }}">{{ user_answers[i] }}</div>
+        </div>
+      {% endfor %}
+    {% endif %}
   </div>
-  {% endif %}
+{% endif %}
+
   
 
 
@@ -128,10 +139,15 @@
   <!-- Correct Answer row -->
   <div id="correct-answers" class="row text-center mb-4 d-none">
     {% for correct_value in correct_answers %}
+    {% if not (is_mcq and correct_value == "unselected") %}
       <div class="col">
-        <div class="correct-value border rounded py-2 bg-light fw-bold">{{ correct_value }}</div>
+        <div class="correct-value border rounded py-2 bg-light fw-bold">
+          {{ correct_value }}
+        </div>
       </div>
+    {% endif %}
     {% endfor %}
+
   </div>
   {% endif %}
 

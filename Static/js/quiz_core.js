@@ -29,6 +29,7 @@ $(document).ready(function () {
         const slot = el.dataset.slot;
         const val = el.dataset.value || null; // get container's data-value
         userAnswers[slot] = val;
+        console.log("im here")
     
         if (!val) {
           isComplete = false;
