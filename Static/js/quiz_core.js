@@ -94,6 +94,15 @@ $('#clear-answer-btn').on('click', function () {
     $(this).draggable('enable');
   });
 
+  // T/F
+  $('.btn.active').removeClass('active');
+  $('input[type=radio]').prop('checked', false);
+
+  // Reset MCQ buttons (like in quiz 7)
+  $('.mcq-btn').removeClass('active');
+  $('[data-slot]').attr('data-value', 'unselected');
+
+
   // Reset slider (if it's a slider question like quiz 3)
   const slider = document.getElementById("aperture-slider");
   const label = document.getElementById("aperture-value");
