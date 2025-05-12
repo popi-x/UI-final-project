@@ -5,9 +5,15 @@
 
   <!-- Final score -->
   <h2 class="mb-4">You got {{ score }} out of {{ total }} correct!</h2>
-  
-  <!-- Retake button -->
-  <a href="/" class="btn btn-outline-dark btn-lg px-4 py-2">Retake the lessons</a>
+
+  <!-- Action buttons -->
+  <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
+    <!-- Retake Lessons -->
+    <a href="/" class="btn btn-outline-dark btn-lg px-4 py-2">Retake the Lessons</a>
+
+    <!-- Retake Quiz -->
+    <a href="{{ url_for('quiz_restart') }}" class="btn btn-outline-primary btn-lg px-4 py-2">Retake the Quiz</a>
+  </div>
 
 </div>
 {% endblock %}

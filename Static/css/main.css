@@ -301,32 +301,45 @@ span{
 
 /*------------ page 3 ss contents ---------- */
 
-.ss-contents .img-row{
-  height: 55%;
+.ss-contents .title{
+  font-weight: bold;
   width: 100%;
+  font-size: clamp(0.5rem, 1.3vw, 2.0rem);
+  height: 10%;
 }
 
-.ss-contents .page-3 .col-md-4{
+.ss-contents .page-3 .col-6{
   height: 100%;
 }
 
+.ss-contents .learn-texts .row{
+  width: 100%;
+}
+
+.ss-contents .learn-texts .shutter-speed-title{
+  cursor: pointer;
+}
+
+.ss-contents .learn-texts .shutter-speed-title.active{
+  color: #FFA770;
+}
 .ss-contents .page-3 .img-container{
-  height: 80%;
-  width: 100%;
+  height: 90%;
+  border-color: #FFA770;
+  border-width: 5px;
+  border-style: solid;
 }
 
-.ss-contents .caption{
+.page-3 img{
+  height: 95%;
+  display: none;
+}
 
-  font-size: clamp(0.5rem, 1vw, 1.6rem);
-  color:#525B76;
+.ss-contents .page-3 .hint{
+  font-size: clamp(0.5rem, 1.3vw, 1.5rem);
+  color: #fac8a8;
   font-weight: bold;
-  display: flex;
-  width: 100%;
-  height: 15%;
-  justify-content: center;
-  align-items: center;
 }
-
 
 
 

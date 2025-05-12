@@ -17,11 +17,15 @@
         <img src="{{ url_for('static', filename=data.image) }}" alt="{{ data.image_caption }}">
     </div>
 </div>
-<form method="POST" class="button-container">
-    
-    <a href="/learn/exposure_triangle/cover" class="btn-secondary">Back</a>
-    <button name="action" value="next" class="btn-next">Next</button>
-</form>
+<form method="POST" class="row justify-content-end button-container">
+    <div class="col-auto back-btn">
+      <a href="/learn/exposure_triangle/cover" class="btn btn-secondary">Back</a>
+    </div>
+    <div class="col-auto next-btn">
+      <button name="action" value="next" class="btn btn-primary">Next</button>
+    </div>
+  </form>
+  
 
 {# ---------- PAGE 2 ---------- #}
 {% elif step == 2 %}
@@ -42,10 +46,15 @@
     </div>
 </div>
 
-<form method="POST" class="button-container">
-    <button name="action" value="prev" class="btn-secondary">Back</button>
-    <button name="action" value="next" class="btn-next">Next</button>
-</form>
+<form method="POST" class="row justify-content-end button-container">
+    <div class="col-auto back-btn">
+      <button name="action" value="prev" class="btn btn-secondary">Back</button>
+    </div>
+    <div class="col-auto next-btn">
+      <button name="action" value="next" class="btn btn-primary">Next</button>
+    </div>
+  </form>
+  
 
 {# ---------- PAGE 3 ---------- #}
 {% elif step == 3 %}
@@ -72,53 +81,64 @@
     </div>
 </div>
 
-<form method="POST" class="button-container">
-    <button name="action" value="prev" class="btn-secondary">Back</button>
-    <button name="action" value="next" class="btn-next">Next</button>
-</form>
+<form method="POST" class="row justify-content-end button-container">
+    <div class="col-auto back-btn">
+      <button name="action" value="prev" class="btn btn-secondary">Back</button>
+    </div>
+    <div class="col-auto next-btn">
+      <button name="action" value="next" class="btn btn-primary">Next</button>
+    </div>
+  </form>
+  
 
-{# ---------- PAGE 5 ---------- #}
-{% elif step == 5 %}
-<div class="exposure-centered">
-
-<div class="page6-wrapper">
-  <div class="page6-main">
-     <p style="white-space:pre-line;">{{ data.text | safe }}</p>
-
-     {% if feedback %}
-     <p style="color:red;font-weight:bold;">{{ feedback }}</p>
-     {% endif %}
-
-     {% if data.choices %}
-     <form method="POST" class="choice-container">
-        {% for choice in data.choices %}
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="answer" value="{{ choice }}" id="{{ choice }}" required>
-          <label class="form-check-label" for="{{ choice }}">{{ choice }}</label>
-        </div>
-        {% endfor %}
-        <br>
-     {% endif %}
+  {# ---------- PAGE 5 ---------- #}
+  {% elif step == 5 %}
+  <div class="exposure-centered">
+  
+    <div class="page6-wrapper">
+      <div class="page6-main">
+        <p style="white-space:pre-line;">{{ data.text | safe }}</p>
+  
+        {% if feedback %}
+        <p style="color:red;font-weight:bold;">{{ feedback }}</p>
+        {% endif %}
+  
+        {% if data.choices %}
+        <form method="POST" class="choice-container">
+          {% for choice in data.choices %}
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="answer" value="{{ choice }}" id="{{ choice }}" required>
+            <label class="form-check-label" for="{{ choice }}">{{ choice }}</label>
+          </div>
+          {% endfor %}
+          <br>
+  
+          <div style="position: fixed; bottom: 200px; right: 200px; display: flex; gap: 1rem; z-index: 1000;">
+            <div class="back-btn">
+              <button name="action" value="prev" class="btn">Back</button>
+            </div>
+            <div class="next-btn">
+              <button name="action" value="next" class="btn">Next</button>
+            </div>
+          </div>
+          
+          
+        </form>
+        {% endif %}
+      </div>
+  
+      <div class="page6-note">
+        {{ data.side_note | safe }}
+        {% if data.side_note_image %}
+        <img src="{{ url_for('static', filename=data.side_note_image) }}" alt="note image">
+        {% if data.side_note_image_caption %}
+        <p class="image-footnote">{{ data.side_note_image_caption }}</p>
+        {% endif %}
+        {% endif %}
+      </div>
+    </div>
   </div>
-
-  <div class="page6-note">
-     {{ data.side_note | safe }}
-     {% if data.side_note_image %}
-    <img src="{{ url_for('static', filename=data.side_note_image) }}" alt="note image">
-    {% if data.side_note_image_caption %}
-    <p class="image-footnote">{{ data.side_note_image_caption }}</p>
-    {% endif %}
-    {% endif %}
-  </div>
-</div>
-
-<div class="button-container-right">
-    <form method="POST">
-        <button name="action" value="prev" class="btn-secondary">Back</button>
-        <button name="action" value="next" class="btn-next">Next</button>
-    </form>
-</div>
-
+  
 
 
 
@@ -152,10 +172,15 @@
     </div>
 </div>
 
-<form method="POST" class="button-container">
-    <button name="action" value="prev" class="btn-secondary">Back</button>
-    <button name="action" value="next" class="btn-next">Next</button>
-</form>
+<form method="POST" class="row justify-content-end button-container">
+    <div class="col-auto back-btn">
+      <button name="action" value="prev" class="btn btn-secondary">Back</button>
+    </div>
+    <div class="col-auto next-btn">
+      <button name="action" value="next" class="btn btn-primary">Next</button>
+    </div>
+  </form>
+  
 
 {% elif step == 7 %}
 <div class="exposure-centered">
@@ -164,23 +189,24 @@
 
     <div class="camera-container">
         <img src="{{ url_for('static', filename='images/exposure_triangle_9.png') }}" alt="Camera" class="camera-image">
-
+    
         <div class="clickable-part" style="top: 30px; left: 280px;" onclick="showPart('ISO')"></div>
         <div class="clickable-part" style="top: 130px; left: 370px;" onclick="showPart('Shutter Speed')"></div>
         <div class="clickable-part" style="top: 200px; left: 350px;" onclick="showPart('Aperture')"></div>
-        <div class="clickable-part" style="top: 180px; left: 400px;" onclick="showPart('Exposure')"></div>
+        <div class="clickable-part" style="top: 190px; left: 405px;" onclick="showPart('Exposure')"></div>
+    
+        <div id="camera-info" class="camera-info-fixed">Click on a part to learn more.</div>
     </div>
-
-    <p id="camera-info" class="camera-info">Click on a part to learn more.</p>
-</div>
-
-
-<form method="POST" class="button-container">
-    <button name="action" value="prev" class="btn-secondary">Back</button>
-
-    <a href="{{ url_for('quiz_view', question_id=1) }}" class="btn-next">Next</a>
-
-</form>
+    
+<form method="POST" class="row justify-content-end button-container">
+    <div class="col-auto back-btn">
+        <button name="action" value="prev" class="btn btn-secondary">Back</button>
+    </div>
+    <div class="col-auto next-btn">
+        <a href="{{ url_for('quiz_view', question_id=1) }}" class="btn btn-primary">Quiz →</a>
+    </div>
+ </form>
+      
 
 
 <script>
@@ -231,16 +257,25 @@ function showPart(part) {
         <br>
     {% endif %}
 
-    <form method="POST" class="button-container">
-        {% if step > 1 %}
-        <button name="action" value="prev" class="btn-secondary">Back</button>
-        {% endif %}
-        {% if step < total_steps %}
-        <button name="action" value="next" class="btn-next">Next</button>
-        {% elif step == total_steps %}
-        <a href="{{ url_for('quiz_home') }}" class="btn-done">Done</a>
-        {% endif %}
-    </form>
+    <div class="w-100 text-end mt-4">
+        <div class="d-inline-flex button-container" style="gap: 1rem;">
+          {% if step > 1 %}
+          <div class="back-btn">
+            <button name="action" value="prev" class="btn btn-secondary">Back</button>
+          </div>
+          {% endif %}
+          {% if step < total_steps %}
+          <div class="next-btn">
+            <button name="action" value="next" class="btn btn-primary">Next</button>
+          </div>
+          {% elif step == total_steps %}
+          <div class="done-btn">
+            <a href="{{ url_for('quiz_home') }}" class="btn btn-primary">Done</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      
 </div>
 {% endif %}
 

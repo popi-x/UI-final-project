@@ -1,9 +1,13 @@
 {% extends "layout.html" %}
 {% block styles %}
-<!--<link rel="stylesheet" href="{{ url_for('static', filename='css/shutter_speed.css') }}">-->
 {% endblock %}
 
 {% block content %}     
+<script src="{{ url_for('static', filename='js/shutter_speed.js') }}"></script>
+<script>
+    const data={{ data | tojson }}
+</script>
+
 
 <div class="row justify-content-center align-items-start contents ss-contents">
     {% if step == 1 %}
@@ -61,8 +65,51 @@
         
 
     {% else %}
+    <h3 class="row title justify-content-start">Recommended shutter speeds for specific scenarios</h3>
     <div class="row text-img-container page-3">
-        <div class="row img-row justify-content-center">
+        <div class="col-6 learn-texts pt-5">
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="0">1/1000s</span>
+                <div class="row">Capturing a sprinter racing down the track or a bird flying in the sky.</div>
+            </div>
+            <br>
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="1">1/500s</span>
+                <div class="row">Photographing a cyclist speeding on a road or a car drifting on a race track.</div>
+            </div>
+            <br>
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="2">1/250s</span>
+                <div class="row">Freezing motion of a person running across the street or a dog playing fetch.</div>
+            </div>
+            <br>
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="3">1/30s</span>
+                <div class="row">Creating a motion blur effect of flowing water in a stream or people walking in a crowd at night.</div>
+            </div>
+            <br>
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="4">1/15s</span>
+                <div class="row">Capturing light trails of moving cars on a highway or the soft motion of a waterfall.</div>
+            </div>
+            <br>
+            <div class="row">
+                <span class="row shutter-speed-title" data-img="5">10s</span>
+                <div class="row">Photographing star trails as the Earth rotates, or capturing the motion of clouds in a dramatic sky.</div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row hint">
+                Click on the shutter speed to see the example image
+            </div>
+            <div class="row img-container justify-content-center align-items-center">
+                <img src="" alt="" id="sample-img">
+            </div>
+        </div>
+
+
+
+        <!--<div class="row img-row justify-content-center">
             <div class="col-md-4">
                 <div class="row img-container">
                     <img src="{{ url_for('static', filename=data.images[0] ) }}" alt="1/1000s to capture the freezing moment of the flying bird" class="img-fluid">
@@ -116,7 +163,7 @@
                     10s
                 </div>
             </div>
-        </div>
+        </div>-->
 
     </div>
 
