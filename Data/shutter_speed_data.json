@@ -17,6 +17,7 @@
     "title": "",
     "text": "Recommended shutter speeds for specific scenarios:",
     "note": "When the shutter speed gets too slow, it becomes difficult to keep the camera steady by hand, and that's when you need a tripod!",
-    "images": ["images/rss_1.png", "images/rss_2.png", "images/rss_3.png", "images/rss_4.png", "images/rss_5.png", "images/rss_6.png"]
+    "images": ["images/rss_1.png", "images/rss_2.png", "images/rss_3.png", "images/rss_4.png", "images/rss_5.png", "images/rss_6.png"],
+    "alt":["1/1000s to capture the freezing moment of the flying bird","1/500s to capture the freezing moment of the cyclist","1/250s to capture the freezing moment of the running dog","1/30s to capture the motion of the flowing water","1/15s to capture the light trails of moving cars","10s to capture the motion of the starry night" ]
 }
 ]
